@@ -1,0 +1,40 @@
+//
+// Close icons
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+.e-close {
+	float: right;
+	font-size: ( globs.$font-size-base * 2 );
+	font-weight: globs.$close-font-weight;
+	line-height: 1;
+	color: globs.$t-text-color;
+	text-shadow: globs.$t-shadow-color;
+	@include mx.opacity( 0.2 );
+
+	&:hover,
+	&:focus {
+		color: globs.$t-text-color;
+		text-decoration: none;
+		cursor: pointer;
+		@include mx.opacity( 0.5 );
+	}
+
+	// [converter] extracted button& to button.close
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+button.e-close {
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	-webkit-appearance: none;
+	appearance: none;
+}

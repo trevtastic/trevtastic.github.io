@@ -1,0 +1,58 @@
+// Theme colors
+//
+// Dark color theme
+
+$name:                     "bluegrey" !default;
+
+$theme-color-1:            #212529 !default;
+$theme-color-2:            #343a40 !default;
+$theme-color-3:            #495057 !default;
+$theme-color-4:            #6c757d !default;
+$theme-color-5:            #adb5bd !default;
+$theme-color-6:            #ced4da !default;
+
+$gradient-color-1:         #ff8200 !default;
+$gradient-color-2:         #f05a28 !default;
+$gradient-color-3:         #e80a89 !default;
+$gradient-color-4:         #6f0ae8 !default;
+$gradient-color-5:         #9e0ac3 !default;
+$gradient-color-6:         #ed3c4d !default;
+$gradient-color-7:         #d10cab !default;
+
+
+// Background colors
+//
+// Colors for background elements
+
+$background-color:         $theme-color-1 !default;
+$foreground-color:         $theme-color-2 !default;
+$input-background:         #292c30 !default;
+$input-disabled-background: $background-color !default;
+$separator-color:          $theme-color-3 !default;
+$border-color:             $theme-color-3 !default;
+$border-color-muted:       $theme-color-2 !default;
+
+$navbar-bg:                $foreground-color !default;
+$sidebar-bg:               $foreground-color !default;
+
+$glow-color:               $theme-color-4 !default;
+$shadow-color:             #141414 !default;
+
+
+// Text and content colors
+//
+// Colors for text elements
+
+$highlight-color:          $gradient-color-6 !default;
+$muted:                    $theme-color-4 !default;
+$text-color:               $theme-color-6 !default;
+$text-disabled:            $muted !default;
+$text-emphasis:          #c1c1c1 !default;
+
+
+// Contextual Colors
+//
+// Component colors
+
+$custom-switch-disabled-bg:   $highlight-color !default;
+$custom-switch-enabled-bg:    #28a745 !default;

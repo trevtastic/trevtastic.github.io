@@ -1,0 +1,13 @@
+// Progress bars
+
+@use "gradients" as mx-gra;
+
+@mixin progress-bar-variant( $color )
+{
+	background-color: $color;
+
+	// Deprecated parent class requirement as of v3.2.0
+	.progress-striped & {
+		@include mx-gra.gradient-striped;
+	}
+}

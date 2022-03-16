@@ -1,0 +1,10 @@
+//
+// Custom dividers
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+
+
+.u-separator {
+	border-bottom: 1px solid globs.$t-border-color;
+}

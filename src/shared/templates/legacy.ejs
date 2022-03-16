@@ -1,0 +1,47 @@
+<% const cbString = ( htmlWebpackPlugin.options.devMode ) ? '?cb=' + htmlWebpackPlugin.options.timeStamp : '';
+   const suffix = ( ! htmlWebpackPlugin.options.devMode ) ? '.min' : '';
+   const theme = htmlWebpackPlugin.options.theme;
+%><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="t-<%= theme %>" data-ui="{{ browser }}" data-ua="{{ useragent }}">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<% if ( htmlWebpackPlugin.options.mobile ) { %><meta name="viewport" content="width=device-width,initial-scale=1"/><% } %>
+	<title>MERN | {{ title }}</title><%
+
+	for ( const meta of htmlWebpackPlugin.options.meta ) { %>
+	<meta<% for ( let key in meta ) { %> <%= key %>="<%= meta[ key ] %>"<% } %>/><%
+	}
+
+	for ( var item of htmlWebpackPlugin.options.links ) {
+		if ( typeof item === 'string' || item instanceof String ) { item = { rel: 'stylesheet', href: item } } %>
+	<link<% for ( key in item ) { %> <%= key %>="<%= item[key] %>"<% } %>/><%
+	} %>
+	<link rel="stylesheet" type="text/css" href="<%= `/css/gen/main${suffix}.css${cbString}` %>"/><%
+	for ( item of htmlWebpackPlugin.options.scripts ) {
+		if ( typeof item === 'string' || item instanceof String ) { item = { src: item, type: 'text/javascript' }; } %>
+	<script<% for ( key in item ) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
+	} %>
+</head>
+<body>
+	<div id="<%= htmlWebpackPlugin.options.appMountId%>">
+		{{ content | safe }}
+	</div>
+	<div id="support" class="c-modal c-modal--dialogue fade" tabindex="-1" role="dialog">
+		<div class="c-modal__dialog" role="document">
+			<div class="c-modal__content">
+				<span class="highlight"></span>
+				<div class="c-modal__body">
+					<div class="c-modal__support">
+						<h4 class="title">Browser not supported</h4>
+						<p>Please update your current browser to the latest version.</p>
+						<button type="button" class="e-btn e-btn--highlight" data-dismiss="modal">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<script type="text/javascript" src="<%= `/js/gen/all${suffix}.js${cbString}` %>"></script>
+	</div>
+</body>
+</html>

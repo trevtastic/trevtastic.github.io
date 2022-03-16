@@ -1,0 +1,32 @@
+@use "../variables" as globs;
+@use "deprecate" as mx-dep;
+@use "hover" as mx-hov;
+
+// stylelint-disable declaration-no-important
+
+// Contextual backgrounds
+
+@mixin bg-variant( $parent, $color, $ignore-warning: false )
+{
+	#{$parent} {
+		background-color: $color !important;
+	}
+
+	a#{$parent},
+	button#{$parent} {
+
+		@include mx-hov.hover-focus() {
+			background-color: darken( $color, 10% ) !important;
+		}
+	}
+
+	@include mx-dep.deprecate( "The `bg-variant` mixin", "v4.4.0", "v5", $ignore-warning );
+}
+
+@mixin bg-gradient-variant( $parent, $color, $ignore-warning: false )
+{
+	#{$parent} {
+		background: $color linear-gradient( 180deg, mix( globs.$body-bg, $color, 15% ), $color ) repeat-x !important;
+	}
+	@include mx-dep.deprecate( "The `bg-gradient-variant` mixin", "v4.5.0", "v5", $ignore-warning );
+}

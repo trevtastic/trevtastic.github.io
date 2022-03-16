@@ -1,0 +1,86 @@
+// 
+// Button element
+// --------------------------------------------------
+
+// Contents
+//
+// Bootstrap
+//  Base
+// Native
+//  Alternate buttons
+
+@use "../../variables" as globs;
+@use "../../variables/theme" as *;
+@use "../../mixins" as mx;
+
+
+// Bootstrap
+// ----------------------
+// Custom style overrides
+
+
+// Base
+//
+// base color overrides
+
+.t-#{$name} {
+
+	.e-btn {
+		color: $text-color;
+
+		@include mx.hover() {
+			color: $text-color;
+		}
+	}
+}
+
+
+// Native
+// ---------------------------
+// Custom style implementation
+
+
+// Alternate
+//
+// Custom alternate buttons
+
+.t-#{$name} {
+
+	.e-btn--outline-white {
+		color: globs.$white;
+
+		@include mx.hover() {
+			color: globs.$gray-900;
+		}
+	}
+
+	.e-btn--highlight,
+	.e-btn--magneta,
+	.e-btn--purple,
+	.e-btn--red {
+		color: globs.$white;
+
+		@include mx.hover() {
+			color: globs.$white;
+		}
+	}
+
+	.e-btn--input {
+		background-color: $input-background;
+		border-color: $border-color;
+	}
+
+	.e-btn--bold-link {
+		color: globs.$link-color;
+
+		@include mx.hover() {
+			color: globs.$link-color;
+		}
+
+		&:focus,
+		&:active,
+		&.active {
+			color: globs.$link-color;
+		}
+	}
+}

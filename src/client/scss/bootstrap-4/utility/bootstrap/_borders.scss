@@ -1,0 +1,79 @@
+// stylelint-disable property-disallowed-list, declaration-no-important
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+//
+// Border
+//
+
+.u-border         { border: globs.$border-width solid globs.$t-border-color !important; }
+.u-border-top     { border-top: globs.$border-width solid globs.$t-border-color !important; }
+.u-border-right   { border-right: globs.$border-width solid globs.$t-border-color !important; }
+.u-border-bottom  { border-bottom: globs.$border-width solid globs.$t-border-color !important; }
+.u-border-left    { border-left: globs.$border-width solid globs.$t-border-color !important; }
+
+.u-border-0        { border: 0 !important; }
+.u-border-top-0    { border-top: 0 !important; }
+.u-border-right-0  { border-right: 0 !important; }
+.u-border-bottom-0 { border-bottom: 0 !important; }
+.u-border-left-0   { border-left: 0 !important; }
+
+@each $color, $value in globs.$theme-colors {
+	.u-border-#{$color} {
+		border-color: $value !important;
+	}
+}
+
+.u-border-white {
+	border-color: globs.$white !important;
+}
+
+//
+// Border-radius
+//
+
+.u-rounded-sm {
+	border-radius: globs.$border-radius-sm !important;
+}
+
+.u-rounded {
+	border-radius: globs.$border-radius !important;
+}
+
+.u-rounded-top {
+	border-top-left-radius: globs.$border-radius !important;
+	border-top-right-radius: globs.$border-radius !important;
+}
+
+.u-rounded-right {
+	border-top-right-radius: globs.$border-radius !important;
+	border-bottom-right-radius: globs.$border-radius !important;
+}
+
+.u-rounded-bottom {
+	border-bottom-right-radius: globs.$border-radius !important;
+	border-bottom-left-radius: globs.$border-radius !important;
+}
+
+.u-rounded-left {
+	border-top-left-radius: globs.$border-radius !important;
+	border-bottom-left-radius: globs.$border-radius !important;
+}
+
+.u-rounded-lg {
+	border-radius: globs.$border-radius-lg !important;
+}
+
+.u-rounded-circle {
+	border-radius: 50% !important;
+}
+
+.u-rounded-pill {
+	border-radius: globs.$rounded-pill !important;
+}
+
+.u-rounded-0 {
+	border-radius: 0 !important;
+}

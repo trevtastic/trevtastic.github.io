@@ -1,0 +1,186 @@
+//
+// Buttons
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Base styles
+// --------------------------------------------------
+
+.e-btn {
+	display: inline-block;
+	margin-bottom: 0; // For input.btn
+	font-weight: globs.$btn-font-weight;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border: 1px solid transparent;
+	@include mx.button-size( globs.$padding-base-vertical, globs.$padding-base-horizontal, globs.$font-size-base, globs.$line-height-base, globs.$btn-border-radius-base );
+	@include mx.user-select( none );
+
+	&,
+	&:active,
+	&.active {
+
+		&:focus,
+		&.focus {
+			@include mx.tab-focus;
+		}
+	}
+
+	&:hover,
+	&:focus,
+	&.focus {
+		color: globs.$btn-default-color;
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active {
+		background-image: none;
+		outline: 0;
+		@include mx.box-shadow( inset 0 3px 5px rgba( 0, 0, 0, .125 ) );
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		cursor: globs.$cursor-disabled;
+		@include mx.opacity( 0.65 );
+		@include mx.box-shadow( none );
+	}
+
+	// [converter] extracted a& to a.btn
+}
+
+a.btn {
+
+	&.disabled,
+	fieldset[disabled] & {
+		pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+	}
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.e-btn--default {
+	@include mx.button-variant( globs.$btn-default-color, globs.$btn-default-bg, globs.$btn-default-border );
+}
+
+.e-btn--primary {
+	@include mx.button-variant( globs.$btn-primary-color, globs.$btn-primary-bg, globs.$btn-primary-border );
+}
+
+// Success appears as green
+.e-btn--success {
+	@include mx.button-variant( globs.$btn-success-color, globs.$btn-success-bg, globs.$btn-success-border );
+}
+
+// Info appears as blue-green
+.e-btn--info {
+	@include mx.button-variant( globs.$btn-info-color, globs.$btn-info-bg, globs.$btn-info-border );
+}
+
+// Warning appears as orange
+.e-btn--warning {
+	@include mx.button-variant( globs.$btn-warning-color, globs.$btn-warning-bg, globs.$btn-warning-border );
+}
+
+// Danger and error appear as red
+.e-btn--danger {
+	@include mx.button-variant( globs.$btn-danger-color, globs.$btn-danger-bg, globs.$btn-danger-border );
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.e-btn--link {
+	font-weight: 400;
+	color: globs.$link-color;
+	border-radius: 0;
+
+	&,
+	&:active,
+	&.active,
+	&[disabled],
+	fieldset[disabled] & {
+		background-color: transparent;
+		@include mx.box-shadow( none );
+	}
+
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: transparent;
+	}
+
+	&:hover,
+	&:focus {
+		color: globs.$link-hover-color;
+		text-decoration: globs.$link-hover-decoration;
+		background-color: transparent;
+	}
+
+	&[disabled],
+	fieldset[disabled] & {
+		
+		&:hover,
+		&:focus {
+			color: globs.$btn-link-disabled-color;
+			text-decoration: none;
+		}
+	}
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.e-btn--lg {
+	// line-height: ensure even-numbered height of button next to large input
+	@include mx.button-size( globs.$padding-large-vertical, globs.$padding-large-horizontal, globs.$font-size-large, globs.$line-height-large, globs.$btn-border-radius-large );
+}
+
+.e-btn--sm {
+	// line-height: ensure proper height of button next to small input
+	@include mx.button-size( globs.$padding-small-vertical, globs.$padding-small-horizontal, globs.$font-size-small, globs.$line-height-small, globs.$btn-border-radius-small );
+}
+
+.e-btn--xs {
+	@include mx.button-size( globs.$padding-xs-vertical, globs.$padding-xs-horizontal, globs.$font-size-small, globs.$line-height-small, globs.$btn-border-radius-small );
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.e-btn--block {
+	display: block;
+	width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.e-btn--block + .e-btn--block {
+	margin-top: fn.pixelc( 5px );
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+
+	&.e-btn--block {
+		width: 100%;
+	}
+}

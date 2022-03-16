@@ -1,0 +1,30 @@
+// Bootstrap functions
+//
+// Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
+
+@use "sass:math";
+
+// Color contrast
+@function color-yiq( $color, $dark: #212529, $light: #ffffff, $contrasted-threshold: 150 )
+{
+	$r: red( $color );
+	$g: green( $color );
+	$b: blue( $color );
+
+	$yiq: math.div( $r * 299 + $g * 587 + $b * 114, 1000 );
+
+	@if ( $yiq >= $contrasted-threshold ) {
+		@return $dark;
+	} @else {
+		@return $light;
+	}
+}
+
+// Request a color level
+@function color-level( $color: #007bff, $level: 0, $color-interval: 8% )
+{
+	$color-base: if( $level > 0, #000000, #ffffff );
+	$level: abs( $level );
+
+	@return mix( $color-base, $color, $level * $color-interval );
+}

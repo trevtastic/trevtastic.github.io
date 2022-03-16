@@ -1,0 +1,89 @@
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@use "sass:math";
+@use "../variables" as globs;
+@use "breakpoints" as mx-bre;
+@use "grid" as mx-grd;
+
+
+@mixin make-grid-columns( $columns: globs.$grid-columns, $gutter: globs.$grid-gutter-width, $breakpoints: globs.$grid-breakpoints )
+{
+	// Common properties for all breakpoints
+	%grid-column {
+		position: relative;
+		width: 100%;
+		padding-right: math.div( $gutter, 2 );
+		padding-left: math.div( $gutter, 2 );
+	}
+
+	@each $breakpoint in map-keys( $breakpoints ) {
+
+		$infix: mx-bre.breakpoint-infix( $breakpoint, $breakpoints );
+
+		@if $columns > 0 {
+			// Allow columns to stretch full width below their breakpoints
+			@for $i from 1 through $columns {
+				.o-col#{$infix}-#{$i} {
+					@extend %grid-column;
+				}
+			}
+		}
+
+		.o-col#{$infix},
+		.o-col#{$infix}-auto {
+			@extend %grid-column;
+		}
+
+		@include mx-bre.media-breakpoint-up( $breakpoint, $breakpoints ) {
+			
+			// Provide basic `.col-{bp}` classes for equal-width flexbox columns
+			.o-col#{$infix} {
+				flex-basis: 0;
+				flex-grow: 1;
+				max-width: 100%;
+			}
+
+			@if globs.$grid-row-columns > 0 {
+				@for $i from 1 through globs.$grid-row-columns {
+					.o-row-cols#{$infix}-#{$i} {
+						@include mx-grd.row-cols( $i );
+					}
+				}
+			}
+
+			.o-col#{$infix}-auto {
+				@include mx-grd.make-col-auto();
+			}
+
+			@if $columns > 0 {
+				@for $i from 1 through $columns {
+					.o-col#{$infix}-#{$i} {
+						@include mx-grd.make-col( $i, $columns );
+					}
+				}
+			}
+
+			.o-order#{$infix}-first { order: -1; }
+
+			.o-order#{$infix}-last { order: $columns + 1; }
+
+			@for $i from 0 through $columns {
+				.o-order#{$infix}-#{$i} { order: $i; }
+			}
+
+			@if $columns > 0 {
+				// `$columns - 1` because offsetting by the width of an entire row isn't possible
+				@for $i from 0 through ($columns - 1) {
+					@if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+						.o-offset#{$infix}-#{$i} {
+							@include mx-grd.make-col-offset( $i, $columns );
+						}
+					}
+				}
+			}
+		}
+	}
+}

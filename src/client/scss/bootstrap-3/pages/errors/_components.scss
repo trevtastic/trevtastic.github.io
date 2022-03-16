@@ -1,0 +1,45 @@
+//
+// Custom page components
+// --------------------------------------------------
+
+// Contents
+//
+// Sliders
+//   concord
+
+
+@use "../../functions/" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Sliders
+// ----------------------
+// Custom slider style overrides
+
+
+// Concord
+//
+// Custom page overrides
+
+.c-concord__align {
+
+	&--error {
+		height: calc( 100vh - 60px );
+	}
+}
+
+.c-concord__text--error,
+.c-concord__links {
+	max-width: fn.pixelc( 600px );
+	text-align: left;
+}
+
+.c-concord__links {
+	margin: 2em auto 0;
+
+	a {
+		font-weight: 500;
+		text-decoration: none;
+	}
+}

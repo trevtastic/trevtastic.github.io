@@ -1,0 +1,28 @@
+// Panels
+
+@mixin panel-variant( $border, $heading-text-color, $heading-bg-color, $heading-border )
+{
+	border-color: $border;
+
+	& > .c-panel__heading {
+		color: $heading-text-color;
+		background-color: $heading-bg-color;
+		border-color: $heading-border;
+
+		+ .c-panel__collapse > .c-panel__body {
+			border-top-color: $border;
+		}
+
+		.badge {
+			color: $heading-bg-color;
+			background-color: $heading-text-color;
+		}
+	}
+
+	& > .c-panel__footer {
+
+		+ .c-panel__collapse > .c-panel__body {
+			border-bottom-color: $border;
+		}
+	}
+}

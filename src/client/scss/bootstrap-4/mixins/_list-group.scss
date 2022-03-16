@@ -1,0 +1,25 @@
+@use "../variables" as globs;
+@use "hover" as mx-hov;
+
+// List Groups
+
+@mixin list-group-item-variant( $state, $background, $color )
+{
+	.c-list-group__item--#{$state} {
+		color: $color;
+		background-color: $background;
+
+		&.c-list-group__item--action {
+			@include mx-hov.hover-focus() {
+			color: $color;
+			background-color: darken( $background, 5% );
+			}
+
+			&.active {
+			color: globs.$white;
+			background-color: $color;
+			border-color: $color;
+			}
+		}
+	}
+}

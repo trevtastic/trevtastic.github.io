@@ -1,0 +1,80 @@
+// Custom variables
+//
+// Global overrides to sass libraries.
+
+@use "../functions" as fn;
+
+
+// Color system
+
+$white:                             #ffffff !default;
+$black:                             #000000 !default;
+$blue:                              #007bff !default;
+$indigo:                            #6610f2 !default;
+$purple:                            #6f42c1 !default;
+$pink:                              #e83e8c !default;
+$red:                               #dc3545 !default;
+$orange:                            #fd7e14 !default;
+$yellow:                            #ffc107 !default;
+$green:                             #28a745 !default;
+$teal:                              #20c997 !default;
+$cyan:                              #17a2b8 !default;
+
+
+// Grid breakpoints
+// 
+// Custom breakpoints
+
+$breakpoints: () !default;
+$breakpoints: map-merge(
+	(
+		xs : 0,
+		ms : 420px, // mobile small
+		mm : 375px, // mobile medium
+		ml : 425px, // mobile large
+		sm : 768px, // tablet
+		md : 1024px, // laptop
+		lg : 1440px, // laptop large
+		xl : 2560px, // desktop extra large
+	),
+	$breakpoints
+);
+
+$screen-font-resize: () !default;
+$screen-font-resize: map-merge(
+	(
+		fl: 1620px, // font large
+		fs: 1780px, // font small
+	),
+	$screen-font-resize
+);
+
+
+// Typography
+// 
+// Custom fonts
+
+$font-size-default:         16px !default;
+
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+$rounded-pill:              fn.pixelc( 800px ) !default;
+
+
+//== Card
+//
+//##
+
+$card-spacer-y:                     fn.pixelc( 12px ) !default;
+$card-spacer-x:                     fn.pixelc( 20px ) !default;
+
+$card-img-overlay-padding:          fn.pixelc( 20px ) !default;
+
+$card-columns-gap:                  fn.pixelc( 20px ) !default;
+
+$card-price-box-space-x:            fn.pixelc( 36px ) !default;
+$card-price-box-space-y:            fn.pixelc( 36px ) !default;
+$card-price-box-border-width:       1px !default;

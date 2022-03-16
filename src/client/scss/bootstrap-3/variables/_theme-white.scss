@@ -1,0 +1,57 @@
+// Theme colors
+//
+// Default colors
+
+$name:                     "white" !default;
+
+$theme-color-1:            #221f1f;
+$theme-color-2:            #4c4948;
+$theme-color-3:            #757575;
+$theme-color-4:            #dedede;
+$theme-color-5:            #fafafa;
+$theme-color-6:            #ffffff;
+
+$gradient-color-1:         #ff8200;
+$gradient-color-2:         #f05a28;
+$gradient-color-3:         #e80a89;
+$gradient-color-4:         #6f0ae8;
+$gradient-color-5:         #9e0ac3;
+$gradient-color-6:         #ed3c4d;
+$gradient-color-7:         #d10cab;
+
+
+// Background colors
+//
+// Colors for background elements
+
+$background-color:         $theme-color-5;
+$foreground-color:         $theme-color-6;
+$input-background:         $theme-color-6;
+$input-disabled-background: $theme-color-4;
+$separator-color:          $theme-color-4;
+$border-color:             $theme-color-4;
+
+$navbar-bg:                $foreground-color;
+$sidebar-bg:               $foreground-color;
+
+$glow-color:               $theme-color-6;
+$shadow-color:             $theme-color-4;
+
+
+// Text and content colors
+//
+// Colors for text elements
+
+$highlight-color:          $gradient-color-6;
+$muted:                    $theme-color-3;
+$text-color:               $theme-color-2;
+$text-disabled:            $muted;
+$text-emphasis:            $theme-color-1;
+
+
+// Contextual Colors
+//
+// Component colors
+
+$custom-switch-disabled-bg:   $highlight-color !default;
+$custom-switch-enabled-bg:    #28a745 !default;

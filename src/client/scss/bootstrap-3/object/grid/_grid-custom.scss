@@ -1,0 +1,27 @@
+// 
+// CSS grip
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+
+
+// Contents
+//
+// Bootstrap
+//   Fluid container
+
+
+// Bootstrap
+// ---------------------
+// Grid system overrides
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.o-container-fluid {
+	max-width: fn.pixelc( globs.$container-lg );
+}

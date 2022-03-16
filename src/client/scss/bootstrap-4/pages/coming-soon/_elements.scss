@@ -1,0 +1,66 @@
+//
+// Custom page elements
+// --------------------------------------------------
+
+// Contents
+//
+// Icons
+// Headings
+// Paragraphs
+// Buttons
+
+@use "../../functions/" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Icons
+//
+// Custom page icons
+
+
+// Headings
+//
+// Custom heading text
+
+.e-headline {
+	color: globs.$white;
+	font-size: fn.pixelc( 26px );
+	letter-spacing: 0.15em;
+	line-height: 1.5;
+	margin-bottom: fn.pixelc( 30px );
+	text-transform: uppercase;
+}
+
+
+// Paragraphs
+//
+// Custom body text
+
+.e-description {
+	color: globs.$white;
+	font-weight: 300;
+	line-height: 1.5;
+}
+
+
+// Buttons
+//
+// Custom buttons
+
+.e-btn--social-link {
+	color: globs.$white;
+
+	i {
+		font-size: 1.2em;
+	}
+
+	@include mx.hover() {
+		color: globs.$t-highlight-color;
+	}
+
+	&:focus,
+	&.focus {
+		color: globs.$t-highlight-color;
+	}
+}

@@ -1,0 +1,131 @@
+//
+// Type
+// --------------------------------------------------
+
+// Contents
+//
+// Headings
+// Horizontal rules
+// Emphasis
+// Lists
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.e-h1, .e-h2, .e-h3, .e-h4, .e-h5, .e-h6 {
+	margin-bottom: globs.$headings-margin-bottom;
+	font-family: globs.$headings-font-family;
+	font-weight: globs.$headings-font-weight;
+	line-height: globs.$headings-line-height;
+}
+
+h1, .e-h1 { @include mx.font-size( globs.$h1-font-size ); }
+h2, .e-h2 { @include mx.font-size( globs.$h2-font-size ); }
+h3, .e-h3 { @include mx.font-size( globs.$h3-font-size ); }
+h4, .e-h4 { @include mx.font-size( globs.$h4-font-size ); }
+h5, .e-h5 { @include mx.font-size( globs.$h5-font-size ); }
+h6, .e-h6 { @include mx.font-size( globs.$h6-font-size ); }
+
+// Type display classes
+.e-display-1 {
+	@include mx.font-size( globs.$display1-size );
+	font-weight: globs.$display1-weight;
+	line-height: globs.$display-line-height;
+}
+.e-display-2 {
+	@include mx.font-size( globs.$display2-size );
+	font-weight: globs.$display2-weight;
+	line-height: globs.$display-line-height;
+}
+.e-display-3 {
+	@include mx.font-size( globs.$display3-size );
+	font-weight: globs.$display3-weight;
+	line-height: globs.$display-line-height;
+}
+.e-display-4 {
+	@include mx.font-size( globs.$display4-size );
+	font-weight: globs.$display4-weight;
+	line-height: globs.$display-line-height;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+	margin-top: globs.$hr-margin-y;
+	margin-bottom: globs.$hr-margin-y;
+	border: 0;
+	border-top: globs.$hr-border-width solid transparent;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.e-small {
+	@include mx.font-size( globs.$small-font-size );
+	font-weight: globs.$font-weight-normal;
+}
+
+mark,
+.e-mark {
+	padding: globs.$mark-padding;
+}
+
+
+//
+// Lists
+//
+
+.e-list-unstyled {
+	@include mx.list-unstyled();
+}
+
+// Inline turns list items into inline-block
+.e-list-inline {
+	@include mx.list-unstyled();
+}
+.e-list-inline-item {
+	display: inline-block;
+
+	&:not(:last-child) {
+		margin-right: globs.$list-inline-padding;
+	}
+}
+
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.e-initialism {
+	@include mx.font-size( 90% );
+	text-transform: uppercase;
+}
+
+// Blockquotes
+.e-blockquote {
+	margin-bottom: globs.$spacer;
+	@include mx.font-size( globs.$blockquote-font-size );
+}
+
+.e-blockquote-footer {
+	display: block;
+	@include mx.font-size( globs.$blockquote-small-font-size );
+	color: globs.$blockquote-small-color;
+
+	&::before {
+		content: "\2014\00A0"; // em dash, nbsp
+	}
+}

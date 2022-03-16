@@ -1,0 +1,7 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+
+@each $value in globs.$user-selects {
+	.u-user-select-#{$value} { user-select: $value !important; }
+}

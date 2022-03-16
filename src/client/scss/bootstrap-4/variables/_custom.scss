@@ -1,0 +1,162 @@
+// Custom variables
+//
+// Globals.
+
+@use "../functions" as fn;
+
+
+// Grid breakpoints
+// 
+// Custom breakpoints
+
+$breakpoints: () !default;
+$breakpoints: map-merge(
+	(
+		xs : 0,
+		ms : 420px, // mobile small
+		mm : 375px, // mobile medium
+		ml : 425px, // mobile large
+		sm : 768px, // tablet
+		md : 1024px, // laptop
+		lg : 1440px, // laptop large
+		xl : 2560px, // desktop extra large
+	),
+	$breakpoints
+);
+
+$screen-font-resize: () !default;
+$screen-font-resize: map-merge(
+	(
+		fl: 1620px, // font large
+		fs: 1780px, // font small
+	),
+	$screen-font-resize
+);
+
+
+// Typography
+// 
+// Custom fonts
+
+$font-family-serif:                 "Times New Roman", Times, Georgia, serif !default;
+// $font-family-sans-serif:            "proxima-nova", "Helvetica Neue", Arial, sans-serif !default;
+// $font-family-sans-serif:            "Montserrat", "Helvetica Neue", Arial, sans-serif !default;
+// $font-family-sans-serif:            "Nunito Sans", "Helvetica Neue", Arial, sans-serif !default;
+
+$font-size-default:                 16px !default;
+$font-size-reset:                   100% !default;
+
+$font-weight-medium:          500 !default;
+$font-weight-semibold:        600 !default;
+$font-weight-extrabold:       800 !default;
+$font-weight-black:           900 !default;
+
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y-md:            fn.pixelc( 14px ) !default; // ~ 0.84em
+$input-btn-padding-x-md:            $input-btn-padding-y-md !default;
+$input-btn-font-size-md:            fn.pixelc( 16px ) !default;
+$input-btn-line-height-md:          1.5 !default;
+
+$input-btn-padding-y-xl:            fn.pixelc( 13px ) !default;
+$input-btn-padding-x-xl:            fn.pixelc( 16px ) !default;
+$input-btn-font-size-xl:            fn.pixelc( 18px ) !default;
+$input-btn-line-height-xl:          1.5 !default;
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-padding-y-md:                  $input-btn-padding-y-md !default;
+$btn-padding-x-md:                  $input-btn-padding-x-md !default;
+$btn-font-size-md:                  $input-btn-font-size-md !default;
+$btn-line-height-md:                $input-btn-line-height-md !default;
+
+$btn-padding-y-xl:                  $input-btn-padding-y-xl !default;
+$btn-padding-x-xl:                  $input-btn-padding-x-xl !default;
+$btn-font-size-xl:                  $input-btn-font-size-xl !default;
+$btn-line-height-xl:                $input-btn-line-height-xl !default;
+
+
+// Forms
+
+$input-padding-y-md:                $input-btn-padding-y-md !default;
+$input-padding-x-md:                $input-btn-padding-x-md !default;
+$input-font-size-md:                $input-btn-font-size-md !default;
+$input-font-weight-md:              400 !default;
+$input-line-height-md:              $input-btn-line-height-md !default;
+
+$input-padding-y-xl:                $input-btn-padding-y-xl !default;
+$input-padding-x-xl:                $input-btn-padding-x-xl !default;
+$input-font-size-xl:                $input-btn-font-size-xl !default;
+$input-font-weight-xl:              500 !default;
+$input-line-height-xl:              $input-btn-line-height-xl !default;
+
+$input-border-radius-md:            fn.pixelc( 4px ) !default;
+$input-border-radius-xl:            fn.pixelc( 4px ) !default;
+
+$input-height-md:                   fn.add( $input-line-height-md * 1em, fn.add( $input-padding-y-md * 2, 1px * 2, false ) ) !default;
+$input-height-xl:                   fn.add( $input-line-height-xl * 1em, fn.add( $input-padding-y-xl * 2, 1px * 2, false ) ) !default;
+
+
+// Form validation
+
+$form-valid:                        "valid" !default;
+$form-invalid:                      "invalid" !default;
+
+
+// Z-Index master list
+// 
+// Added values to bootstrap
+
+$zindex-loader:                     1080 !default;
+
+
+// Navbar and menus
+// 
+// Control navbar spacing
+
+$main-menu-item-height:             6.875em !default;
+$main-menu-width:                   7.5em !default;
+$main-menu-width-xs:                5.625em !default;
+$main-menu-width-md:                6.25em !default;
+$main-menu-width-lg:                6.875em !default;
+
+$sub-menu-width:                    14.375em !default;
+$sub-menu-width-xs:                 $sub-menu-width !default;
+$sub-menu-width-md:                 $sub-menu-width !default;
+$sub-menu-width-lg:                 $sub-menu-width !default;
+
+$navbar-height:                     5.375em !default;
+$navbar-height-xs:                  4.5em !default;
+
+$sidebar-width:                     16.25em !default;
+$sidebar-padding-x:                 1.5em !default;
+$app-menu-width:                    17.5em !default;
+
+$toggle-bar-transition:             margin-left 0.35s ease-in-out, left 0.35s ease-in-out, margin-right 0.35s ease-in-out, right 0.35s ease-in-out !default;
+
+
+// Cards
+
+$card-price-box-space-x:           2.25em !default;
+$card-price-box-space-y:           2.25em !default;
+$card-price-box-border-width:      1px !default;
+
+
+// Tabbed Panels
+
+$tabbed-panels-input-size:         0.875em !default;
+
+
+// Animations
+// 
+//
+
+$menu-collapse-time:                300ms !default;
+$animation-time-long:               1000ms !default;
+$animation-time-short:              200ms !default;

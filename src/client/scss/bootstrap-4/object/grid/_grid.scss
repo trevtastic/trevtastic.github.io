@@ -1,0 +1,85 @@
+// 
+// Flexbox CSS grip
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if globs.$enable-grid-classes {
+
+	// Single container class with breakpoint max-widths
+	.o-container,
+	// 100% wide container at all breakpoints
+	.o-container-fluid {
+		@include mx.make-container();
+	}
+
+	// Responsive containers that are 100% wide until a breakpoint
+	@each $breakpoint, $container-max-width in globs.$container-max-widths {
+		
+		.o-container-#{$breakpoint} {
+			@extend .o-container-fluid;
+		}
+
+		@include mx.media-breakpoint-up( $breakpoint, globs.$grid-breakpoints ) {
+			%responsive-container-#{$breakpoint} {
+				max-width: $container-max-width;
+			}
+
+			// Extend each breakpoint which is smaller or equal to the current breakpoint
+			$extend-breakpoint: true;
+
+			@each $name, $width in globs.$grid-breakpoints {
+				@if ( $extend-breakpoint ) {
+					.o-container#{mx.breakpoint-infix( $name, globs.$grid-breakpoints )} {
+						@extend %responsive-container-#{$breakpoint};
+					}
+
+					// Once the current breakpoint is reached, stop extending
+					@if ( $breakpoint == $name ) {
+						$extend-breakpoint: false;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+// Row
+//
+// Rows contain your columns.
+
+@if globs.$enable-grid-classes {
+
+	.o-row {
+		@include mx.make-row();
+	}
+
+	// Remove the negative margin from default .row, then the horizontal padding
+	// from all immediate children columns (to prevent runaway style inheritance).
+	.o-row--no-gutters {
+		margin-right: 0;
+		margin-left: 0;
+
+		> .o-col,
+		> [class*="o-col-"] {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+
+}
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if globs.$enable-grid-classes {
+	@include mx.make-grid-columns();
+}

@@ -1,0 +1,19 @@
+// 
+// Pulsate animations
+// --------------------------------------------------
+
+@use "../variables" as globs;
+
+@keyframes pulsateAnimation {
+	from { background-color: globs.$t-theme-color-2 }
+	25% { background-color: globs.$t-theme-color-3 }
+	50% { background-color: globs.$t-theme-color-2 }
+	to { background-color: globs.$t-theme-color-2 }
+}
+
+@keyframes pulsateTransparentAnimation {
+	from { background-color: transparent }
+	25% { background-color: globs.$t-theme-color-3 }
+	50% { background-color: transparent }
+	to { background-color: transparent }
+}

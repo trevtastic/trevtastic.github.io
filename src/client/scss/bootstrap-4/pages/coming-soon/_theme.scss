@@ -1,0 +1,40 @@
+// 
+// Page theme colors
+// --------------------------------------------------
+
+// Contents
+//
+// Elements
+//  Buttons
+// Objects
+//  Overlays
+
+@use "../../variables" as globs;
+@use "../../variables/theme" as *;
+@use "../../mixins" as mx;
+
+
+// Elements
+// ----------------------
+// Custom element colors
+
+
+// Buttons
+//
+// Custom button colors
+
+.t-#{$name} {
+
+	.e-btn--social-link {
+		color: globs.$white;
+
+		@include mx.hover() {
+			color: $highlight-color;
+		}
+
+		&:focus,
+		&.focus {
+			color: $highlight-color;
+		}
+	}
+}

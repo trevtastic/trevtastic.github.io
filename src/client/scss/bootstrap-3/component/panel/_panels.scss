@@ -1,0 +1,307 @@
+//
+// Panels
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Base class
+.c-panel {
+	margin-bottom: globs.$line-height-computed;
+	background-color: globs.$t-background-color;
+	border: 1px solid transparent;
+	border-radius: globs.$panel-border-radius;
+	@include mx.box-shadow( 0 1px 1px globs.$t-shadow-color );
+}
+
+// Panel contents
+.c-panel__body {
+	padding: globs.$panel-body-padding;
+	@include mx.clearfix;
+}
+
+// Optional heading
+.c-panel__heading {
+	padding: globs.$panel-heading-padding;
+	border-bottom: 1px solid transparent;
+	@include mx.border-top-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+
+	> .dropdown .c-dropdown__toggle {
+		color: inherit;
+	}
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.c-panel__title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: ( globs.$font-size-base * 1.125 );
+	color: inherit;
+
+	> a,
+	> small,
+	> .small,
+	> small > a,
+	> .small > a {
+		color: inherit;
+	}
+}
+
+// Optional footer (stays gray in every modifier class)
+.c-panel__footer {
+	padding: globs.$panel-footer-padding;
+	background-color: globs.$panel-footer-bg;
+	border-top: 1px solid globs.$panel-inner-border;
+	@include mx.border-bottom-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+}
+
+
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.c-panel {
+
+	> .list-group,
+	> .c-panel__collapse > .list-group {
+		margin-bottom: 0;
+
+		.list-group-item {
+			border-width: 1px 0;
+			border-radius: 0;
+		}
+
+		// Add border top radius for first one
+		&:first-child {
+
+			.list-group-item:first-child {
+				border-top: 0;
+				@include mx.border-top-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+			}
+		}
+
+		// Add border bottom radius for last one
+		&:last-child {
+
+			.list-group-item:last-child {
+				border-bottom: 0;
+				@include mx.border-bottom-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+			}
+		}
+	}
+
+	> .c-panel__heading + .c-panel__collapse > .list-group {
+
+		.list-group-item:first-child {
+			@include mx.border-top-radius( 0 );
+		}
+	}
+}
+
+// Collapse space between when there's no additional content.
+.c-panel__heading + .list-group {
+
+	.list-group-item:first-child {
+		border-top-width: 0;
+	}
+}
+
+.list-group + .c-panel__footer {
+	border-top-width: 0;
+}
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.c-panel {
+
+	> .table,
+	> .table-responsive > .table,
+	> .c-panel__collapse > .table {
+		margin-bottom: 0;
+
+		caption {
+			padding-right: globs.$panel-body-padding;
+			padding-left: globs.$panel-body-padding;
+		}
+	}
+
+	// Add border top radius for first one
+	> .table:first-child,
+	> .table-responsive:first-child > .table:first-child {
+		@include mx.border-top-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+
+		> thead:first-child,
+		> tbody:first-child {
+			> tr:first-child {
+				border-top-left-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				border-top-right-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+
+				td:first-child,
+				th:first-child {
+					border-top-left-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				}
+
+				td:last-child,
+				th:last-child {
+					border-top-right-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				}
+			}
+		}
+	}
+
+	// Add border bottom radius for last one
+	> .table:last-child,
+	> .table-responsive:last-child > .table:last-child {
+		@include mx.border-bottom-radius( ( globs.$panel-border-radius - fn.pixelc( 1px ) ) );
+
+		> tbody:last-child,
+		> tfoot:last-child {
+			> tr:last-child {
+				border-bottom-right-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				border-bottom-left-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+
+				td:first-child,
+				th:first-child {
+					border-bottom-left-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				}
+
+				td:last-child,
+				th:last-child {
+					border-bottom-right-radius: ( globs.$panel-border-radius - fn.pixelc( 1px ) );
+				}
+			}
+		}
+	}
+
+	> .c-panel__body + .table,
+	> .c-panel__body + .table-responsive,
+	> .table + .c-panel__body,
+	> .table-responsive + .c-panel__body {
+		border-top: 1px solid globs.$table-border-color;
+	}
+
+	> .table > tbody:first-child > tr:first-child th,
+	> .table > tbody:first-child > tr:first-child td {
+		border-top: 0;
+	}
+
+	> .table-bordered,
+	> .table-responsive > .table-bordered {
+		border: 0;
+
+		> thead,
+		> tbody,
+		> tfoot {
+
+			> tr {
+				> th:first-child,
+				> td:first-child {
+					border-left: 0;
+				}
+
+				> th:last-child,
+				> td:last-child {
+					border-right: 0;
+				}
+			}
+		}
+
+		> thead,
+		> tbody {
+
+			> tr:first-child {
+
+				> td,
+				> th {
+					border-bottom: 0;
+				}
+			}
+		}
+
+		> tbody,
+		> tfoot {
+
+			> tr:last-child {
+
+				> td,
+				> th {
+					border-bottom: 0;
+				}
+			}
+		}
+	}
+
+	> .table-responsive {
+		margin-bottom: 0;
+		border: 0;
+	}
+}
+
+
+// Collapsible panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.c-panel__group {
+	margin-bottom: globs.$line-height-computed;
+
+	// Tighten up margin so it's only between panels
+	.c-panel {
+		margin-bottom: 0;
+		border-radius: globs.$panel-border-radius;
+
+		+ .c-panel {
+			margin-top: 5px;
+		}
+	}
+
+	.c-panel__heading {
+		border-bottom: 0;
+
+		+ .c-panel__collapse > .c-panel__body,
+		+ .c-panel__collapse > .list-group {
+			border-top: 1px solid globs.$panel-inner-border;
+		}
+	}
+
+	.c-panel__footer {
+		border-top: 0;
+
+		+ .c-panel__collapse .c-panel__body {
+			border-bottom: 1px solid globs.$panel-inner-border;
+		}
+	}
+}
+
+
+// Contextual variations
+.c-panel__default {
+	@include mx.panel-variant( globs.$panel-default-border, globs.$panel-default-text, globs.$panel-default-heading-bg, globs.$panel-default-border );
+}
+
+.c-panel__primary {
+  @include mx.panel-variant( globs.$panel-primary-border, globs.$panel-primary-text, globs.$panel-primary-heading-bg, globs.$panel-primary-border );
+}
+
+.c-panel__success {
+  @include mx.panel-variant( globs.$panel-success-border, globs.$panel-success-text, globs.$panel-success-heading-bg, globs.$panel-success-border );
+}
+
+.c-panel__info {
+  @include mx.panel-variant( globs.$panel-info-border, globs.$panel-info-text, globs.$panel-info-heading-bg, globs.$panel-info-border );
+}
+
+.c-panel__warning {
+  @include mx.panel-variant( globs.$panel-warning-border, globs.$panel-warning-text, globs.$panel-warning-heading-bg, globs.$panel-warning-border );
+}
+
+.c-panel__danger {
+  @include mx.panel-variant( globs.$panel-danger-border, globs.$panel-danger-text, globs.$panel-danger-heading-bg, globs.$panel-danger-border );
+}

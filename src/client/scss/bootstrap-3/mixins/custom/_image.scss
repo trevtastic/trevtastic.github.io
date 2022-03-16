@@ -1,0 +1,24 @@
+//
+// Custom image mxins
+// --------------------------------------------------
+
+@mixin img-full( $url, $position: 'absolute', $opacity: 1 )
+{
+
+	&::before {
+		content: "";
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		background: url( $url ) center top no-repeat;
+		background-size: cover;
+		opacity: $opacity;
+
+		@if $position == "absolute" {
+			position: absolute;
+		} @else {
+			position: fixed;
+		}
+	}
+}

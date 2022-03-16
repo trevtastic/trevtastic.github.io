@@ -1,0 +1,53 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+// Contents
+//
+// Base
+// Toolbar
+// Header
+// Top
+// Footer
+// Responsive
+
+
+// Base
+//
+// base element object styles
+
+#appMountPoint {
+	position: relative;
+	height: auto;
+	height: 100vh;
+	min-height: 100vh;
+}
+
+
+// Toolbar
+//
+// 
+
+
+// Header
+//
+// head, showcase object styles
+
+
+// Top
+//
+// top content section styles
+
+
+// Footer
+//
+// footer object styles
+
+
+// Responsive
+//
+// Media queries

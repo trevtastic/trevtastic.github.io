@@ -1,0 +1,97 @@
+// 
+// Bootstrap Button
+// --------------------------------------------------
+
+// Contents
+//
+// Native
+//  Button sizes
+//  Alternate buttons
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Native
+// ---------------------------
+// Custom style implementation
+
+
+// Button Sizes
+//
+// Custom button sizes
+
+.e-btn--sm-alt {
+	padding: fn.pixelc( 6px ) fn.pixelc( 14px );
+	font-size: globs.$btn-font-size-sm;
+	line-height: globs.$btn-line-height-sm;
+	border-radius: globs.$btn-border-radius-sm;
+}
+
+.e-btn--md {
+	padding: globs.$c-btn-padding-y-md globs.$c-btn-padding-x-md;
+}
+
+// Alternate
+//
+// Custom alternate buttons
+
+.e-btn--outline-white {
+	border-color: globs.$white;
+	color: globs.$white;
+
+	@include mx.hover() {
+		color: globs.$gray-900;
+		background-color: globs.$white;
+	}
+}
+
+.e-btn--highlight {
+	background-color: globs.$t-highlight-color;
+	border-color: globs.$t-highlight-color;
+	color: globs.$white;
+
+	@include mx.hover() {
+		background-color: darken( globs.$t-highlight-color, 7.5% );
+		border-color: darken( globs.$t-highlight-color, 7.5% );
+		color: globs.$white;
+	}
+
+	&:focus,
+	&.focus {
+		background-color: darken( globs.$t-highlight-color, 7.5% );
+		border-color: darken( globs.$t-highlight-color, 7.5% );
+		color: globs.$white;
+	}
+}
+
+.e-btn--input {
+	background-color: globs.$t-input-background;
+	border-color: globs.$t-border-color;
+
+	@include mx.hover-focus {
+		background-image: none;
+		outline: none;
+	}
+}
+
+.e-btn--bold-link {
+	color: globs.$link-color;
+	font-weight: globs.$c-font-weight-medium;
+
+	@include mx.hover() {
+		color: globs.$link-color;
+	}
+
+	&:focus,
+	&:active,
+	&.active {
+		color: globs.$link-color;
+	}
+}
+
+
+// Responsive
+//
+//

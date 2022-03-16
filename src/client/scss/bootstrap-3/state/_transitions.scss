@@ -1,0 +1,41 @@
+//
+// Component animations
+// --------------------------------------------------
+
+@use "../mixins" as mx;
+
+
+// Heads up!
+//
+// We don't use the `.opacity()` mixin here since it causes a bug with text
+// fields in IE7-8. Source: https://github.com/twbs/bootstrap/pull/3552.
+
+.js-fade {
+	opacity: 0;
+	@include mx.transition( opacity .15s linear );
+
+	&.js-in {
+		opacity: 1;
+	}
+}
+
+.js-collapse {
+	display: none;
+
+	&.js-in { display: block; }
+	// [converter] extracted tr&.in to tr.collapse.in
+	// [converter] extracted tbody&.in to tbody.collapse.in
+}
+
+tr.js-collapse.js-in { display: table-row; }
+
+tbody.collapse.js-in { display: table-row-group; }
+
+.is-collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	@include mx.transition-property( height, visibility );
+	@include mx.transition-duration( .35s );
+	@include mx.transition-timing-function( ease );
+}

@@ -1,0 +1,56 @@
+//
+// Base
+// --------------------------------------------------
+
+// Contents
+//
+// Root
+// Containers
+
+@use '../../variables/theme' as *;
+
+
+//
+// Root
+//
+
+:root {
+	--background-color: #{$background-color};
+	--border-color: #{$border-color};
+	--foreground-color: #{$foreground-color};
+	--glow-color: #{$glow-color};
+	--gradient-color-1: #{$gradient-color-1};
+	--gradient-color-2: #{$gradient-color-2};
+	--gradient-color-3: #{$gradient-color-3};
+	--gradient-color-4: #{$gradient-color-4};
+	--gradient-color-5: #{$gradient-color-5};
+	--gradient-color-6: #{$gradient-color-6};
+	--gradient-color-7: #{$gradient-color-7};
+	--highlight-color: #{$highlight-color};
+	--input-background: #{$input-background};
+	--muted: #{$muted};
+	--separator-color: #{$separator-color};
+	--shadow-color: #{$shadow-color};
+	--text-color: #{$text-color};
+	--text-disabled: #{$text-disabled};
+	--text-emphasis: #{$text-emphasis};
+	--theme-color-1: #{$theme-color-1};
+	--theme-color-2: #{$theme-color-2};
+	--theme-color-3: #{$theme-color-3};
+	--theme-color-4: #{$theme-color-4};
+	--theme-color-5: #{$theme-color-5};
+	--theme-color-6: #{$theme-color-6};
+}
+
+//
+// Containers
+//
+
+.t-#{$name} {
+	background-color: $background-color;
+
+	body {
+		color: $text-color;
+		background-color: $background-color;
+	}
+}

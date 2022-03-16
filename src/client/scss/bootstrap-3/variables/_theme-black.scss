@@ -1,0 +1,60 @@
+// Theme colors
+//
+// Dark color theme
+
+$name:                     "black" !default;
+
+$theme-color-1:            #191919;
+$theme-color-2:            #232323;
+$theme-color-3:            #313131;
+$theme-color-4:            #5a5a5a;
+$theme-color-5:            #757575;
+$theme-color-6:            #969696;
+
+$gradient-color-1:         #ff8200;
+$gradient-color-2:         #f05a28;
+$gradient-color-3:         #e80a89;
+$gradient-color-4:         #6f0ae8;
+$gradient-color-5:         #9e0ac3;
+$gradient-color-6:         #ed3c4d;
+$gradient-color-7:         #d10cab;
+
+
+// Background colors
+//
+// Colors for background elements
+
+$background-color:         $theme-color-1;
+$foreground-color:         $theme-color-2;
+$input-background:         #202020;
+$input-disabled-background: $background-color;
+$separator-color:          $theme-color-3;
+$border-color:             $theme-color-3;
+
+$navbar-bg:                $foreground-color;
+$sidebar-bg:               $foreground-color;
+
+$glow-color:               $theme-color-4;
+$shadow-color:             #141414;
+
+$wave-bg:                  url( '/images/assets/bg/wave-bg-dark.svg' );
+$wave-bg-ie:               url( '/images/assets/bg/wave-bg-dark.png' );
+
+
+// Text and content colors
+//
+// Colors for text elements
+
+$highlight-color:          $gradient-color-6;
+$muted:                    $theme-color-4;
+$text-color:               $theme-color-6;
+$text-disabled:            $muted;
+$text-emphasis:          #c1c1c1;
+
+
+// Contextual Colors
+//
+// Component colors
+
+$custom-switch-disabled-bg:   $highlight-color !default;
+$custom-switch-enabled-bg:    #28a745 !default;

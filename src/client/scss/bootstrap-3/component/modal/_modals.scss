@@ -1,0 +1,159 @@
+//
+// Modals
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+// Kill the scroll on the body
+.modal-open {
+	overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.c-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: globs.$zindex-modal;
+	display: none;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+
+	// Prevent Chrome on Windows from adding a focus outline. For details, see
+	// https://github.com/twbs/bootstrap/pull/10951.
+	outline: 0;
+
+	// When fading in the modal, animate it to slide down
+	&.fade .c-modal__dialog {
+		@include mx.translate( 0, -25% );
+		@include mx.transition-transform( 0.3s ease-out );
+	}
+
+	&.in .c-modal__dialog { @include mx.translate( 0, 0 ); }
+}
+
+.modal-open .c-modal {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.c-modal__dialog {
+	position: relative;
+	width: auto;
+	margin: fn.pixelc( 10px );
+}
+
+// Actual modal
+.c-modal__content {
+	position: relative;
+	background-color: globs.$t-background-color;
+	background-clip: padding-box;
+	border: 1px solid globs.$modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+	border: 1px solid globs.$t-border-color;
+	border-radius: globs.$border-radius-large;
+	@include mx.box-shadow( 0 fn.pixelc( 3px ) fn.pixelc( 9px ) globs.$t-shadow-color );
+	// Remove focus outline from opened modal
+	outline: 0;
+}
+
+// Modal background
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: globs.$zindex-modal-background;
+	background-color: globs.$t-background-color;
+	// Fade for backdrop
+	&.fade { @include mx.opacity( 0 ); }
+	&.in { @include mx.opacity( globs.$modal-backdrop-opacity ); }
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.c-modal__header {
+	padding: globs.$modal-title-padding;
+	border-bottom: 1px solid globs.$t-border-color;
+	@include mx.clearfix;
+}
+// Close icon
+.c-modal__header .close {
+	margin-top: fn.pixelc( -2px );
+}
+
+// Title text within header
+.c-modal__title {
+	margin: 0;
+	line-height: globs.$modal-title-line-height;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.c-modal__body {
+	position: relative;
+	padding: globs.$modal-inner-padding;
+}
+
+// Footer (for actions)
+.c-modal__footer {
+	padding: globs.$modal-inner-padding;
+	text-align: right; // right align buttons
+	border-top: 1px solid globs.$t-border-color;
+	@include mx.clearfix; // clear it in case folks use .pull-* classes on buttons
+
+	// Properly space out buttons
+	.e-btn + .e-btn {
+		margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+		margin-left: fn.pixelc( 5px );
+	}
+	// but override that for button groups
+	.c-btn-group .e-btn + .e-btn {
+		margin-left: fn.pixelc( -1px );
+	}
+	// and override it for block buttons as well
+	.e-btn--block + .e-btn--block {
+		margin-left: 0;
+	}
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.c-modal__scrollbar-measure {
+	position: absolute;
+	top: fn.pixelc( -9999px );
+	width: fn.pixelc( 50px );
+	height: fn.pixelc( 50px );
+	overflow: scroll;
+}
+
+// Scale up the modal
+@media ( min-width: globs.$screen-sm-min )
+{
+	// Automatically set modal's width for larger viewports
+	.c-modal__dialog {
+		width: globs.$modal-md;
+		margin: fn.pixelc( 30px ) auto;
+	}
+	.c-modal__content {
+		@include mx.box-shadow( 0 fn.pixelc( 5px ) fn.pixelc( 15px ) globs.$t-shadow-color );
+	}
+
+	// Modal sizes
+	.c-modal--sm { width: globs.$modal-sm; }
+}
+
+@media ( min-width: globs.$screen-md-min )
+{
+	.c-modal--lg { width: globs.$modal-lg; }
+}

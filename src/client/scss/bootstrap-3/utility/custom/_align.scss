@@ -1,0 +1,13 @@
+//
+// Alignment utilities
+// --------------------------------------------------
+
+// Vertical alignment
+.u-align-content {
+
+	> span,
+	> div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

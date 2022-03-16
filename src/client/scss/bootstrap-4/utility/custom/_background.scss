@@ -1,0 +1,17 @@
+//
+// Custom background utilities
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Colors
+
+.u-bg-background {
+	background-color: globs.$t-background-color;
+}
+
+.u-bg-foreground {
+	background-color: globs.$t-foreground-color;
+}

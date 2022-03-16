@@ -1,0 +1,46 @@
+//
+// Custom page elements
+// --------------------------------------------------
+
+// Contents
+//
+// Base
+//   type
+
+@use "../../functions/" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Base
+// ----------------------
+// Custom element overrides
+
+
+// Type
+//
+// Custom type declarations
+
+.c-concord__text,
+.c-concord__links a {
+	font-family: globs.$headings-font-family;
+}
+
+.c-concord__text__emphasis {
+	color: globs.$c-white;
+	font-size: fn.pixelc( 90px );
+	font-weight: 700;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.c-concord__text__regular {
+	font-size: fn.pixelc( 18px );
+	font-weight: 600;
+	margin: fn.pixelc( 10px ) 0 0 7px;
+
+	.arrow {
+		font-weight: 400;
+		margin-right: 10px;
+	}
+}

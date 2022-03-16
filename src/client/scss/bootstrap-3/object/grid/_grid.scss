@@ -1,0 +1,97 @@
+//
+// Grid system
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.o-container {
+	@include mx.container-fixed;
+
+	@media ( min-width: globs.$screen-sm-min ) {
+		width: globs.$container-sm;
+	}
+	@media ( min-width: globs.$screen-md-min ) {
+		width: globs.$container-md;
+	}
+	@media ( min-width: globs.$screen-lg-min ) {
+		width: globs.$container-lg;
+	}
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.o-container-fluid {
+	@include mx.container-fixed;
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.o-row {
+	@include mx.make-row;
+}
+
+.o-row--no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+
+	[class*="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@include mx.make-grid-columns;
+
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+@include mx.make-grid( xs );
+
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media ( min-width: globs.$screen-sm-min ) {
+	@include mx.make-grid( sm );
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media ( min-width: globs.$screen-md-min ) {
+	@include mx.make-grid( md );
+}
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media ( min-width: globs.$screen-lg-min ) {
+	@include mx.make-grid( lg );
+}

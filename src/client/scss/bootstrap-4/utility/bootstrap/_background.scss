@@ -1,0 +1,27 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+@each $color, $value in globs.$theme-colors {
+	@include mx.bg-variant( ".u-bg-#{$color}", $value, true );
+}
+
+@if globs.$enable-gradients {
+	@each $color, $value in globs.$theme-colors {
+		@include mx.bg-gradient-variant( ".u-bg-gradient-#{$color}", $value, true );
+	}
+}
+
+.u-bg-black {
+	background-color: globs.$black !important;
+}
+
+.u-bg-white {
+	background-color: globs.$white !important;
+}
+
+.u-bg-transparent {
+	background-color: transparent !important;
+}

@@ -1,0 +1,10 @@
+// Trigger hardware acceleration for an element
+//
+// works for iOS
+
+@mixin accelerate()
+{
+	-webkit-transform: translateZ( 0 );
+	-webkit-perspective: 1000;
+	-webkit-backface-visibility: hidden;
+}

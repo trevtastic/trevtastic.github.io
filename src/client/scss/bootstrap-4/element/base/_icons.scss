@@ -1,0 +1,22 @@
+//
+// Type
+// --------------------------------------------------
+
+// Contents
+//
+// Base
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Base
+//
+// Top level svg base styles
+
+.e-svg {
+	fill-rule: evenodd;
+	clip-rule: evenodd;
+	stroke-linejoin: round;
+	stroke-miterlimit: 2;
+}

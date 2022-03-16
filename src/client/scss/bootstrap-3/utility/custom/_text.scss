@@ -1,0 +1,23 @@
+// 
+// Text
+// --------------------------------------------------
+
+@use "../../variables" as globs;
+
+
+// Contextual colors
+
+.u-text-highlight {
+	color: globs.$t-highlight-color;
+}
+
+.u-text-orange {
+	color: globs.$t-gradient-color-2;
+}
+
+
+// Selection
+
+.u-disable-text-selection {
+	user-select: none;
+}

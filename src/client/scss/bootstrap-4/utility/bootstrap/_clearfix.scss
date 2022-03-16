@@ -1,0 +1,6 @@
+@use "../../mixins" as mx;
+
+
+.u-clearfix {
+	@include mx.clearfix();
+}

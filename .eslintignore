@@ -1,0 +1,5 @@
+docs/
+node_modules/
+src/client/build
+src/server/build
+src/shared/templates

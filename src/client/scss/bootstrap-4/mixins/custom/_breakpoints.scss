@@ -1,0 +1,36 @@
+// Breakpoints
+// 
+// Custom viewport breakpoints
+
+@use "../../variables" as globs;
+
+// Media for portrait orientations
+// Bootstrap media extension
+@mixin media-breakpoint-portrait()
+{
+	@media ( orientation: portrait ) {
+		@content;
+	}
+}
+
+// Media for landscape orientations
+// Bootstrap media extension
+@mixin media-breakpoint-landscape()
+{
+	@media ( orientation: landscape ) {
+		@content;
+	}
+}
+
+// Media for targeting mobile landscape orientation
+// Bootstrap media extension
+@mixin media-breakpoint-mobile-landscape( $name, $breakpoints: globs.$grid-breakpoints )
+{
+	$max: breakpoint-max( $name, $breakpoints );
+
+	@if $max {
+		@media ( orientation: landscape ) and ( max-width: $max ) {
+			@content;
+		}
+	}
+}

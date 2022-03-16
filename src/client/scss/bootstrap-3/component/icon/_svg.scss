@@ -1,0 +1,31 @@
+// 
+// Svg Component
+// --------------------------------------------------
+
+// Contents
+//
+// Scalable svg
+
+
+// Scalable svg
+//
+// scalable svg base
+
+.c-scalable-svg {
+	padding: 0;
+	position: relative;
+	height: 0;
+	width: 100%;
+
+	svg {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		left: 0;
+		top: 0;
+	}
+}
+
+.c-scalable-svg--logo {
+	padding-bottom: 20%; // 100 * 45/225
+}

@@ -1,0 +1,30 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+//
+// Utilities for common `display` values
+//
+
+@each $breakpoint in map-keys( globs.$grid-breakpoints ) {
+
+	@include mx.media-breakpoint-up( $breakpoint ) {
+		$infix: mx.breakpoint-infix( $breakpoint, globs.$grid-breakpoints );
+
+		@each $value in globs.$displays {
+			.u-d#{$infix}-#{$value} { display: $value !important; }
+		}
+	}
+}
+
+
+//
+// Utilities for toggling `display` in print
+//
+
+@media print {
+	@each $value in globs.$displays {
+		.u-d-print-#{$value} { display: $value !important; }
+	}
+}

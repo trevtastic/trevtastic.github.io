@@ -1,0 +1,76 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+//
+// Text
+//
+
+.u-text-monospace { font-family: globs.$font-family-monospace !important; }
+
+// Alignment
+
+.u-text-justify  { text-align: justify !important; }
+.u-text-wrap     { white-space: normal !important; }
+.u-text-nowrap   { white-space: nowrap !important; }
+.u-text-truncate { @include mx.text-truncate(); }
+
+// Responsive alignment
+
+@each $breakpoint in map-keys( globs.$grid-breakpoints ) {
+	@include mx.media-breakpoint-up( $breakpoint ) {
+		$infix: mx.breakpoint-infix( $breakpoint, globs.$grid-breakpoints );
+
+		.u-text#{$infix}-left   { text-align: left !important; }
+		.u-text#{$infix}-right  { text-align: right !important; }
+		.u-text#{$infix}-center { text-align: center !important; }
+	}
+}
+
+// Transformation
+
+.u-text-lowercase  { text-transform: lowercase !important; }
+.u-text-uppercase  { text-transform: uppercase !important; }
+.u-text-capitalize { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.u-font-weight-light   { font-weight: globs.$font-weight-light !important; }
+.u-font-weight-lighter { font-weight: globs.$font-weight-lighter !important; }
+.u-font-weight-normal  { font-weight: globs.$font-weight-normal !important; }
+.u-font-weight-bold    { font-weight: globs.$font-weight-bold !important; }
+.u-font-weight-bolder  { font-weight: globs.$font-weight-bolder !important; }
+.u-font-italic         { font-style: italic !important; }
+
+// Contextual colors
+
+.u-text-white { color: globs.$white !important; }
+
+@each $color, $value in globs.$theme-colors {
+	@include mx.text-emphasis-variant( ".u-text-#{$color}", $value, true );
+}
+
+.u-text-body { color: globs.$body-color !important; }
+.u-text-muted { color: globs.$text-muted !important; }
+
+.u-text-black-50 { color: rgba( globs.$black, .5 ) !important; }
+.u-text-white-50 { color: rgba( globs.$white, .5 ) !important; }
+
+// Misc
+
+.u-text-hide {
+	@include mx.text-hide( $ignore-warning: true );
+}
+
+.u-text-decoration-none { text-decoration: none !important; }
+
+.u-text-break {
+	word-break: break-word !important; // Deprecated, but avoids issues with flex containers
+	word-wrap: break-word !important; // Used instead of `overflow-wrap` for IE & Edge Legacy
+}
+
+// Reset
+
+.u-text-reset { color: inherit !important; }

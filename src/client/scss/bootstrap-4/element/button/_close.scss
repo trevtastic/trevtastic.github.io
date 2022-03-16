@@ -1,0 +1,33 @@
+// 
+// Custom close buttons
+// --------------------------------------------------
+
+// Contents
+//
+// Base
+
+
+//
+// Base styles
+//
+
+.e-btn-close {
+	box-sizing: content-box;
+	background-color: transparent;
+	border: 0;
+	font-family: "bootstrap-icon";
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+
+	&::before {
+		content: "\f62a";
+		font-size: 1em;
+	}
+
+	&:focus,
+	&.focus {
+		outline: 0;
+		box-shadow: none;
+	}
+}

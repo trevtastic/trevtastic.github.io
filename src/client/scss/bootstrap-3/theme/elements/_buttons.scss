@@ -1,0 +1,84 @@
+// 
+// Button element
+// --------------------------------------------------
+
+// Contents
+//
+// Bootstrap
+//  Base
+//  Close
+// Native
+//  Alternate buttons
+
+@use "../../variables" as globs;
+@use "../../variables/theme" as *;
+@use "../../mixins" as mx;
+
+
+// Bootstrap
+// ----------------------
+// Custom style overrides
+
+
+// Base
+//
+// base color overrides
+
+
+// Close
+//
+// close btn overrides
+
+.t-#{$name} {
+
+	.e-close {
+		color: $text-color;
+		text-shadow: $shadow-color;
+
+		&:hover,
+		&:focus {
+			color: $highlight-color;
+		}
+	}
+}
+
+
+// Native
+// ---------------------------
+// Custom style implementation
+
+
+// Alternate
+//
+// Custom alternate buttons
+
+.t-#{$name} {
+
+	.e-btn--outline-white {
+
+		&:focus,
+		&.focus {
+			color: $theme-color-1;
+		}
+
+		&:hover {
+			color: $theme-color-1;
+		}
+
+		&:active,
+		&.active,
+		.open > &.c-dropdown__toggle {
+			color: $theme-color-1;
+
+			&:hover,
+			&:focus,
+			&.focus {
+				color: $theme-color-1;
+			}
+		}
+
+		.badge {
+			color: $theme-color-1;
+		}
+	}
+}

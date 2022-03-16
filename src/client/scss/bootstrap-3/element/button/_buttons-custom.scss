@@ -1,0 +1,104 @@
+// 
+// Bootstrap Button
+// --------------------------------------------------
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+// Contents
+//
+// Native
+//  Button sizes
+//  Alternate buttons
+
+
+// Native
+// ---------------------------
+// Custom style implementation
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.e-btn--sign-in {
+	font-weight: 700;
+	@include mx.button-size(
+		globs.$padding-small-vertical, globs.$padding-small-horizontal, globs.$font-size-small, globs.$line-height-small, globs.$btn-border-radius-small
+	);
+}
+
+.e-btn--error {
+	display: block;
+	font-weight: 700;
+	width: 100%;
+	max-width: fn.pixelc( 176px );
+	margin: fn.pixelc( 16px ) auto 0;
+	text-decoration: none;
+	@include mx.button-size(
+		globs.$padding-large-vertical, globs.$padding-base-horizontal, globs.$font-size-base, globs.$line-height-base, globs.$border-radius-small
+	);
+}
+
+
+// Alternate buttons
+// ---------------------------------------------------
+
+.e-btn--highlight {
+	@include mx.button-variant( globs.$c-white, globs.$t-highlight-color, globs.$t-highlight-color );
+}
+
+.e-btn--outline-white {
+	color: globs.$c-white;
+	border-color: globs.$c-white;
+
+	&:focus,
+	&.focus {
+		color: globs.$t-theme-color-1;
+		background-color: globs.$c-white;
+		border-color: globs.$c-white;
+	}
+
+	&:hover {
+		color: globs.$t-theme-color-1;
+		background-color: globs.$c-white;
+		border-color: globs.$c-white;
+	}
+
+	&:active,
+	&.active,
+	.open > &.c-dropdown__toggle {
+		color: globs.$t-theme-color-1;
+		background-color: globs.$c-white;
+		background-image: none;
+		border-color: globs.$c-white;
+
+		&:hover,
+		&:focus,
+		&.focus {
+			color: globs.$t-theme-color-1;
+			background-color: globs.$c-white;
+			border-color: globs.$c-white;
+		}
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+
+		&:hover,
+		&:focus,
+		&.focus {
+			border-color: globs.$c-white;
+		}
+	}
+
+	.badge {
+		color: globs.$t-theme-color-1;
+		background-color: globs.$c-white;
+	}
+}
+
+.e-btn--magneta {
+	@include mx.button-variant( globs.$c-white, globs.$t-gradient-color-3, globs.$t-gradient-color-3 );
+}

@@ -1,0 +1,17 @@
+@use "gradients" as mx-gra;
+
+
+@mixin alert-variant( $background, $border, $color )
+{
+	color: $color;
+	@include mx-gra.gradient-bg( $background );
+	border-color: $border;
+
+	hr {
+		border-top-color: darken( $border, 5% );
+	}
+
+	.alert-link {
+		color: darken( $color, 10% );
+	}
+}

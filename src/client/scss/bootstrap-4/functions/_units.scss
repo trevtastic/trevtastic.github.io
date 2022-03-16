@@ -1,0 +1,39 @@
+// Custom functions
+//
+// Unit measurement conversion helpers
+
+@use "sass:math";
+
+
+// Convert pixels to ems
+//
+// @param {String} The pixel value to convert
+// @param {String} The em factor to use.
+// @return {String} The new em measurement
+@function pixel-to-em( $value, $factor: 16px ) {
+	@return ( math.div( $value, $factor ) ) * 1em;
+}
+
+// Convert pixels to rems
+//
+// @param {String} The pixel value to convert
+// @param {String} The em factor to use.
+// @return {String} The new em measurement
+@function pixel-to-rem( $value, $factor: 16px ) {
+	@return ( math.div( $value, $factor ) ) * 1rem;
+}
+
+// Pixel conversion wrapper.
+//
+// @param {String} The pixel value to convert
+// @param {String} The conversion to perform.
+@function pixelc( $value, $conv: "em" )
+{
+	@if $conv == "em" {
+		@return pixel-to-em( $value );
+	} @else if $conv == "rem" {
+		@return pixel-to-rem( $value );
+	} @else {
+		@return $value;
+	}
+}

@@ -1,0 +1,54 @@
+.c-concord__text,
+.c-concord__links a {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.c-concord__text__emphasis {
+  color: #ffffff;
+  font-size: 5.625em;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.c-concord__text__regular {
+  font-size: 1.125em;
+  font-weight: 600;
+  margin: 0.625em 0 0 7px;
+}
+.c-concord__text__regular .arrow {
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.o-section-error {
+  background-color: #fafafa;
+  border: 30px solid #ff1d4d;
+}
+
+.c-concord__align--error {
+  height: -webkit-calc(100vh - 60px);
+  height: calc(100vh - 60px);
+}
+
+.c-concord__text--error,
+.c-concord__links {
+  max-width: 37.5em;
+  text-align: left;
+}
+
+.c-concord__links {
+  margin: 2em auto 0;
+}
+.c-concord__links a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.js-adjust {
+  display: block;
+}
+
+.t-bluegrey .o-section-error {
+  background-color: #212529;
+}

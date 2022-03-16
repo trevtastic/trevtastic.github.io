@@ -1,0 +1,23 @@
+// 
+// CSS grip
+// --------------------------------------------------
+
+// Contents
+//
+// Bootstrap Flex grid
+//   Container widths
+
+@use "../../functions" as fn;
+@use "../../variables" as globs;
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if globs.$enable-grid-classes {
+
+	.o-container-fluid {
+		max-width: fn.pixelc( map-get( globs.$container-max-widths, "xl" ) );
+	}
+}

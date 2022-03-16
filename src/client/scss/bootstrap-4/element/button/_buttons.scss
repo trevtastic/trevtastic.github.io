@@ -1,0 +1,162 @@
+// 
+// Bootstrap Button
+// --------------------------------------------------
+
+// Contents
+//
+// Base
+// Alternate buttons
+// Link buttons
+// Button Sizes
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Base
+//
+// the base styles
+
+.e-btn {
+	display: inline-block;
+	font-family: globs.$btn-font-family;
+	font-weight: globs.$btn-font-weight;
+	color: globs.$t-text-color;
+	text-align: center;
+	text-decoration: if( globs.$link-decoration == none, null, none );
+	white-space: globs.$btn-white-space;
+	vertical-align: middle;
+	user-select: none;
+	background-color: transparent;
+	border: globs.$btn-border-width solid transparent;
+	@include mx.button-size( globs.$btn-padding-y, globs.$btn-padding-x, globs.$btn-font-size, globs.$btn-line-height, globs.$btn-border-radius );
+	@include mx.transition( color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out );
+
+	@include mx.hover() {
+		color: globs.$t-text-color;
+		text-decoration: none;
+	}
+
+	&:focus,
+	&.focus {
+		outline: 0;
+		box-shadow: none;
+	}
+
+	// Disabled comes first so active can properly restyle
+	&.disabled,
+	&:disabled {
+		opacity: globs.$btn-disabled-opacity;
+		@include mx.box-shadow( none );
+	}
+
+	&:not( :disabled ):not( .disabled ) {
+		cursor: if( globs.$enable-pointer-cursor-for-buttons, pointer, null );
+
+		&:active,
+		&.active {
+			@include mx.box-shadow( none );
+
+			&:focus {
+				@include mx.box-shadow( none );
+			}
+		}
+	}
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset:disabled a.btn {
+	pointer-events: none;
+}
+
+
+// Alternate buttons
+//
+// alternative button variants
+
+@each $color, $value in globs.$theme-colors {
+
+	.e-btn--#{$color} {
+		@include mx.button-variant( $value, $value );
+	}
+}
+
+@each $color, $value in globs.$theme-colors {
+
+	.e-btn--outline-#{$color} {
+		@include mx.button-outline-variant( $value );
+	}
+}
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.e-btn--link {
+	font-weight: globs.$font-weight-normal;
+	color: globs.$link-color;
+	text-decoration: globs.$link-decoration;
+
+	@include mx.hover() {
+		color: globs.$link-hover-color;
+		text-decoration: globs.$link-hover-decoration;
+	}
+
+	&:focus,
+	&.focus {
+		text-decoration: globs.$link-hover-decoration;
+	}
+
+	&:disabled,
+	&.disabled {
+		color: globs.$btn-link-disabled-color;
+		pointer-events: none;
+	}
+
+	// No need for an active state here
+}
+
+
+//
+// Button Sizes
+//
+
+.e-btn--lg {
+	@include mx.button-size(
+		globs.$btn-padding-y-lg, globs.$btn-padding-x-lg, globs.$btn-font-size-lg, globs.$btn-line-height-lg, globs.$btn-border-radius-lg
+	);
+}
+
+.e-btn--sm {
+	@include mx.button-size(
+		globs.$btn-padding-y-sm, globs.$btn-padding-x-sm, globs.$btn-font-size-sm, globs.$btn-line-height-sm, globs.$btn-border-radius-sm
+	);
+}
+
+
+//
+// Block button
+//
+
+.e-btn--block {
+	display: block;
+	width: 100%;
+
+	// Vertically space out multiple block buttons
+	+ .e-btn--block {
+		margin-top: globs.$btn-block-spacing-y;
+	}
+}
+
+// Specificity overrides
+input[ type="submit" ],
+input[ type="reset" ],
+input[ type="button" ] {
+
+	&.e-btn--block {
+		width: 100%;
+	}
+}

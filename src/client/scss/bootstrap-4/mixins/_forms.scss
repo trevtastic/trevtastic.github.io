@@ -1,0 +1,183 @@
+@use "../functions" as fn;
+@use "../variables" as globs;
+@use "border-radius" as mx-bor;
+@use "deprecate" as mx-dep;
+@use "gradients" as mx-gra;
+@use "vendor/rfs" as mxv-rfs;
+
+// Form control focus state
+//
+// Generate a customized focus state and for any input with the specified color,
+// which defaults to the `$input-focus-border-color` variable.
+//
+// We highly encourage you to not customize the default value, but instead use
+// this to tweak colors on an as-needed basis. This aesthetic change is based on
+// WebKit's default styles, but applicable to a wider range of browsers. Its
+// usability and accessibility should be taken into account with any change.
+//
+// Example usage: change the default blue border and shadow to white for better
+// contrast against a dark gray background.
+@mixin form-control-focus( $ignore-warning: false )
+{
+	&:focus {
+		color: globs.$input-focus-color;
+		background-color: globs.$input-focus-bg;
+		border-color: globs.$input-focus-border-color;
+		outline: 0;
+	}
+	@include mx-dep.deprecate( "The `form-control-focus()` mixin", "v4.4.0", "v5", $ignore-warning );
+}
+
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+@mixin form-validation-state-selector( $state )
+{
+	@if ( $state == "valid" or $state == "invalid" ) {
+		.was-validated #{if(&, "&", "")}:#{$state},
+		#{if( &, "&", "" )}.is-#{$state} {
+			@content;
+		}
+	} @else {
+		#{if( &, "&", "" )}.is-#{$state} {
+			@content;
+		}
+	}
+}
+
+@mixin form-validation-state( $state, $color, $icon )
+{
+	.#{$state}-feedback {
+		display: none;
+		width: 100%;
+		margin-top: globs.$form-feedback-margin-top;
+		@include mxv-rfs.font-size( globs.$form-feedback-font-size );
+		color: $color;
+	}
+
+	.#{$state}-tooltip {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 5;
+		display: none;
+		max-width: 100%; // Contain to parent when possible
+		padding: globs.$form-feedback-tooltip-padding-y globs.$form-feedback-tooltip-padding-x;
+		margin-top: .1rem;
+		@include mxv-rfs.font-size( globs.$form-feedback-tooltip-font-size );
+		line-height: globs.$form-feedback-tooltip-line-height;
+		color: fn.color-yiq( $color );
+		background-color: rgba( $color, globs.$form-feedback-tooltip-opacity );
+		@include mx-bor.border-radius( globs.$form-feedback-tooltip-border-radius );
+	}
+
+	@include form-validation-state-selector( $state )
+	{
+		~ .#{$state}-feedback,
+		~ .#{$state}-tooltip {
+			display: block;
+		}
+	}
+
+	.e-form-control {
+		@include form-validation-state-selector( $state ) {
+			border-color: $color;
+
+			@if globs.$enable-validation-icons {
+				padding-right: globs.$input-height-inner;
+				background-image: fn.escape-svg( $icon );
+				background-repeat: no-repeat;
+				background-position: right globs.$input-height-inner-quarter center;
+				background-size: globs.$input-height-inner-half globs.$input-height-inner-half;
+			}
+
+			&:focus {
+				border-color: $color;
+				box-shadow: 0 0 0 globs.$input-focus-width rgba( $color, .25 );
+			}
+		}
+	}
+
+	// stylelint-disable-next-line selector-no-qualifying-type
+	textarea.e-form-control {
+		@include form-validation-state-selector( $state ) {
+			@if globs.$enable-validation-icons {
+				padding-right: globs.$input-height-inner;
+				background-position: top globs.$input-height-inner-quarter right globs.$input-height-inner-quarter;
+			}
+		}
+	}
+
+	.e-custom-select {
+		@include form-validation-state-selector( $state ) {
+			border-color: $color;
+
+			@if globs.$enable-validation-icons {
+				padding-right: globs.$custom-select-feedback-icon-padding-right;
+				background: globs.$custom-select-background, fn.escape-svg( $icon ) globs.$custom-select-bg no-repeat globs.$custom-select-feedback-icon-position / globs.$custom-select-feedback-icon-size;
+			}
+
+			&:focus {
+				border-color: $color;
+				box-shadow: 0 0 0 globs.$input-focus-width rgba( $color, .25 );
+			}
+		}
+	}
+
+	.e-form-check-input {
+		@include form-validation-state-selector( $state ) {
+			~ .e-form-check-label {
+				color: $color;
+			}
+
+			~ .#{$state}-feedback,
+			~ .#{$state}-tooltip {
+				display: block;
+			}
+		}
+	}
+
+	.e-custom-control-input {
+		@include form-validation-state-selector( $state ) {
+			~ .e-custom-control-label {
+				color: $color;
+
+				&::before {
+					border-color: $color;
+				}
+			}
+
+			&:checked {
+				~ .e-custom-control-label::before {
+					border-color: lighten( $color, 10% );
+					@include mx-gra.gradient-bg( lighten( $color, 10% ) );
+				}
+			}
+
+			&:focus {
+				~ .e-custom-control-label::before {
+					box-shadow: 0 0 0 globs.$input-focus-width rgba( $color, .25 );
+				}
+
+				&:not(:checked) ~ .e-custom-control-label::before {
+					border-color: $color;
+				}
+			}
+		}
+	}
+
+  // custom file
+	.e-custom-file-input {
+		@include form-validation-state-selector( $state ) {
+			~ .e-custom-file-label {
+				border-color: $color;
+			}
+
+			&:focus {
+				~ .e-custom-file-label {
+					border-color: $color;
+					box-shadow: 0 0 0 globs.$input-focus-width rgba( $color, .25 );
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+
+
+.u-shadow-sm { box-shadow: globs.$box-shadow-sm !important; }
+.u-shadow { box-shadow: globs.$box-shadow !important; }
+.u-shadow-lg { box-shadow: globs.$box-shadow-lg !important; }
+.u-shadow-none { box-shadow: none !important; }

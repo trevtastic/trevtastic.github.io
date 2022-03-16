@@ -1,0 +1,16 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+@each $breakpoint in map-keys( globs.$grid-breakpoints ) {
+
+	@include mx.media-breakpoint-up( $breakpoint ) {
+		$infix: mx.breakpoint-infix( $breakpoint, globs.$grid-breakpoints );
+
+		.u-float#{$infix}-left  { float: left !important; }
+		.u-float#{$infix}-right { float: right !important; }
+		.u-float#{$infix}-none  { float: none !important; }
+	}
+}

@@ -1,0 +1,8 @@
+// stylelint-disable declaration-no-important
+
+@use "../../variables" as globs;
+
+
+@each $value in globs.$overflows {
+	.u-overflow-#{$value} { overflow: $value !important; }
+}

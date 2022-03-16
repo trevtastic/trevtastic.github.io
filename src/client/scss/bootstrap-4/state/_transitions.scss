@@ -1,0 +1,29 @@
+// 
+// Transitions
+// --------------------------------------------------
+
+@use "../variables" as globs;
+@use "../mixins" as mx;
+
+
+.js-fade {
+	@include mx.transition( globs.$transition-fade );
+
+	&:not( .js-show ) {
+		opacity: 0;
+	}
+}
+
+.js-collapse {
+
+	&:not( .js-show ) {
+		display: none;
+	}
+}
+
+.is-collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	@include mx.transition( globs.$transition-collapse );
+}
