@@ -7,104 +7,80 @@
  * file that was distributed with this source code.
  */
 
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import $ from 'jquery';
 
-import { contextKey } from 'Shared/react/constants/defaults';
+import AppEntry from './apprenderer.js';
 import { EventLoader } from 'Shared/util/helpers';
-import configureContext from 'Shared/react/context';
-import { addError, configureStore } from 'Shared/react/redux';
-// import * as serviceWorker from 'Workers/service';
-// import { serviceWorkerConfig } from 'Util';
-
-import 'Scss/bootstrap-4/main.scss';
+// CSS
+import 'Scss/bootstrap-4/react.scss';
 
 /**
  * Declare private properties
  * @private
  */
 
-const NAME     = 'promvc_app';
-const VERSION  = '1.0.0';
+const DATA_KEY = 'promvc.app';
+
+let initialised = false;
 
 /**
- * The client-side app entry.
+ * The client-side home app.
  * 
  * @since 1.0.0
  */
-class AppEntry
+class ReactApp
 {
-	constructor()
+	constructor( element )
 	{
-		this._context = window.promvc != undefined ?
-			window.promvc.context : {};
-
-		// init
-		this.init();
-	}
-
-	// getters
-
-	get NAME() {
-		return NAME;
-	}
-
-	get VERSION() {
-		return VERSION;
+		this._element = element;
+		this._context = window.promvc != undefined ? window.promvc.context : {};
 	}
 
 	init()
 	{
+		if ( initialised ) return;
+
 		// Handle UI theme switching
 		EventLoader.themeSwitch();
+
+		// Render app
+		const app = new AppEntry();
+		app.init( this._context );
+
+		// register init
+		initialised = true;
 	}
 
-	renderReactApp( App, basename )
+	// static
+
+	static _jQueryInterface( config )
 	{
-		const initialState = ( localStorage[ contextKey ] ) ?
-			JSON.parse( localStorage[ contextKey ] ) : configureContext( this._context );
-		const store = configureStore( initialState );
+		return this.each( function () {
+			let data = $( this ).data( DATA_KEY );
 
-		// create state cookie
-		const saveState = () => {
-			localStorage[ contextKey ] = JSON.stringify( store.getState() );
-		};
-		store.subscribe( saveState );
+			if ( ! data ) {
+				data = new ReactApp( this );
+				$( this ).data( DATA_KEY, data );
+			}
 
-		// error handling
-		const handleError = ( error ) => {
-			store.dispatch( addError( error.message ) );
-		};
-		window.addEventListener( 'error', handleError );
-
-		// add globals - debug
-		window.React = React;
-		window.store = store;
-
-		// base url
-		basename = basename || '';
-
-		// render application
-		ReactDOM.render(
-			<StrictMode>
-				<Provider store={store}>
-					<Router basename={basename}>
-						<App />
-					</Router>
-				</Provider>
-			</StrictMode>,
-			document.getElementById( 'appMountPoint' )
-		);
-
-		// register service worker
-		// serviceWorker.register( serviceWorkerConfig );
+			if ( config === 'init' ) {
+				data[ config ]();
+			}
+		});
 	}
 }
 
 /**
- * Module exports
- * @public
+ * --------------------
+ * Application Load
+ * --------------------
  */
-export default AppEntry;
+
+$( function () {
+
+	$( 'body' ).each( function () {
+		const $wrapper = $( this );
+		ReactApp._jQueryInterface.call( $wrapper, 'init' );
+	});
+
+});

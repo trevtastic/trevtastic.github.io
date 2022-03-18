@@ -1,0 +1,22 @@
+//
+// Custom page objects
+// --------------------------------------------------
+
+// Contents
+//
+// Background
+
+
+@use "../../functions/" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Background
+//
+// Overlays and background containers
+
+.o-section-error {
+	background-color: globs.$t-background-color;
+	border: 30px solid #ff1d4d;
+}

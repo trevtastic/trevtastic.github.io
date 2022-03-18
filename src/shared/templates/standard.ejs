@@ -1,0 +1,137 @@
+<% const regexp = /[~./]?(vendor|bundle|common)[~.]?/;
+   const metadata = htmlWebpackPlugin.options.meta;
+   const metalinks = htmlWebpackPlugin.options.links;
+   const theme = htmlWebpackPlugin.options.theme;
+%><!DOCTYPE html>
+<html lang="en" class="s-sr t-<%= theme %>" data-ui="{{ browser }}" data-ua="{{ useragent }}">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<% if ( htmlWebpackPlugin.options.mobile ) { %><meta name="viewport" content="width=device-width,initial-scale=1"><% } %>
+	<title>Trevor Chigonda | {{ title }}</title><%
+
+	for ( const meta in metadata ) { %>
+	<meta<% for ( let key in metadata[ meta ] ) { %> <%= key %>="<%= metadata[ meta ][ key ] %>"<% } %>><%
+	}
+
+	for ( var item in metalinks ) {
+		if ( typeof metalinks[ item ] === 'string' || metalinks[ item ] instanceof String ) { metalinks[ item ] = { rel: 'stylesheet', href: metalinks[ item ] } } %>
+	<link<% for ( key in metalinks[ item ] ) { %> <%= key %>="<%= metalinks[ item ][ key ] %>"<% } %>><%
+	}
+
+	for ( const chunk of htmlWebpackPlugin.files.css ) {
+		let match = chunk.match( regexp );
+		if ( match && match.length > 1 ) { %>
+	<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.entries[ match[ 1 ] ].destCSS + chunk %>" /><%
+		}
+	}
+
+	for ( item of htmlWebpackPlugin.options.scripts ) {
+		if ( typeof item === 'string' || item instanceof String ) { item = { src: item, type: 'text/javascript' }; } %>
+	<script<% for ( key in item ) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
+	} %>
+</head>
+<body>
+	{% include 'pulse-loader.njk' %}
+	<div id="<%= htmlWebpackPlugin.options.appMountId%>">
+		{% if content_toolbar %}
+			<div id="toolbar">
+				{% block toolbar %}
+					<div class="o-container-fluid">
+						<div class="o-row">
+							<div class="o-col">
+								{% if showCookieDisclosure %}
+									{% include 'cookie.njk' %}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endblock %}
+			</div>
+		{% endif %}
+		{% if content_head %}
+			<div id="header">
+				<div id="head" class="{% if head_scroll %}o-head-scroll{% endif %}">
+					{% block head %}
+						{% include 'navigation.njk' %}
+					{% endblock %}
+				</div>
+				<div id="head-after"></div>
+				<div id="showcase">
+					{% block showcase %}{% endblock %}
+				</div>
+			</div>
+		{% endif %}
+		{% if content_utility %}
+			<div id="utility">
+				{% block utility %}{% endblock %}
+			</div>
+		{% endif %}
+		{% if content_top %}
+			<div id="top">
+				{% block top %}{% endblock %}
+			</div>
+		{% endif %}
+		{% if content_main %}
+			<div id="main">
+				{% if content_mainTop %}
+					<div id="main-top">
+						{% block mainTop %}{% endblock %}
+					</div>
+				{% endif %}
+				<div id="main-content">
+					<div class="o-container-fluid">
+						<div class="o-row">
+							{% if content_sidebarA %}
+								<div id="sidebar-a">
+									{% block sidebarA %}{% endblock %}
+								</div>
+							{% endif %}
+							<div id="content-center">
+								{% block contentCenter %}{% endblock %}
+							</div>
+							{% if content_sidebarB %}
+								<div id="sidebar-b">
+									{% block sidebarB %}{% endblock %}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% if content_mainBottom %}
+					<div id="main-bottom">
+						{% block mainBottom %}{% endblock %}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if content_bottom %}
+			<div id="bottom">
+				{% block bottom %}{% endblock %}
+			</div>
+		{% endif %}
+		{% if content_tray %}
+			<div id="tray">
+				{% block tray %}{% endblock %}
+			</div>
+		{% endif %}
+		{% if content_footer %}
+			<div id="footer" class="u-bg-foreground">
+				{% block footer %}
+					{% include 'footer.njk' %}
+					{% include 'copyright.njk' %}
+				{% endblock %}
+			</div>
+			<div id="footer-after"></div>
+		{% endif %}
+	</div>
+	<div><%
+		for ( chunk of htmlWebpackPlugin.files.js ) {
+			match = chunk.match( regexp );
+			if ( match && match.length > 1 ) { %>
+		<script type="text/javascript" src="<%= htmlWebpackPlugin.options.entries[ match[ 1 ] ].destJS + chunk %>"></script><%
+			}
+		} %>
+	</div>
+</body>
+</html>

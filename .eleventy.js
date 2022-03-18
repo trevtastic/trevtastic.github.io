@@ -1,6 +1,7 @@
 module.exports = function ( eleventyConfig ) {
 
 	// plugins
+	const htmlmin = require( 'html-minifier' );
 	const markdownIt = require( 'markdown-it' );
 	const markdowItAttrs = require( 'markdown-it-attrs' );
 	const markdownItReplaceLink = require( 'markdown-it-replace-link' );
@@ -66,9 +67,24 @@ module.exports = function ( eleventyConfig ) {
 			.use( markdownItReplaceLink )
 	);
 
-	// set 11ty config and register plugins
-	eleventyConfig.addPassthroughCopy( { 'src/client/content/assets/img': 'assets/img/content' } );
+	// register plugins
 	eleventyConfig.setLibrary( 'md', markdownLib );
+	
+	// add transforms
+	eleventyConfig.addPassthroughCopy( { 'src/client/content/assets/img': 'assets/img/content' } );
+	eleventyConfig.addTransform( 'htmlmin', function ( content ) {
+		if ( this.outputPath && this.outputPath.endsWith( '.html' ) ) {
+			let minified = htmlmin.minify( content, {
+				useShortDoctype: true,
+				removeComments: true,
+				collapseWhitespace: true
+			});
+
+			return minified;
+		}
+
+		return content;
+	});
 
 	// return config
 	return {

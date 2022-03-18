@@ -56,7 +56,6 @@ function ComingSoon( props )
 	useEffect(() => {
 
 		// componentDidMount
-
 		showContent();
 
 	}, []);
@@ -85,7 +84,7 @@ function ComingSoon( props )
 		<div>
 			<div className="o-section-overlay o-section-overlay--media o-section-overlay--youtube">
 				<div id="page-youtube">
-					<img src="/images/content/bg/hot_coals.jpg" />
+					<img src="/assets/img/bg/hot_coals.jpg" />
 				</div>
 			</div>
 			<div className="o-section-overlay u-bg-black u-op-8"></div>

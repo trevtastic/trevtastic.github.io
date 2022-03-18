@@ -20,10 +20,10 @@ import classnames from 'classnames';
  * 
  * @since 1.0.0
  */
-function Pulse( props )
+function PulseLoader( props )
 {
 	// Props
-	const { isLoaded } = props;
+	const { loading } = props;
 
 	// State
 	const [ show, setShow ] = useState( true );
@@ -44,7 +44,9 @@ function Pulse( props )
 		show && <div
 			className={classnames(
 				"o-loader-wrap",
-				{ "u-op-0": isLoaded }
+				"o-loader-wrap--full",
+				{ "is-loading": loading },
+				{ "u-op-0": ! loading }
 			)}
 			onTransitionEnd={handleLoadEnd}
 		>
@@ -65,12 +67,12 @@ function Pulse( props )
 /**
  * Set default props
  */
-Pulse.defaultProps = {
-	isLoaded: false
+PulseLoader.defaultProps = {
+	loading: true
 };
 
 /**
  * Module exports
  * @public
  */
-export default Pulse;
+export default PulseLoader;

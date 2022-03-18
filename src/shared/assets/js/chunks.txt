@@ -1,0 +1,197 @@
+Set(5) {
+	Chunk {
+		id: 143,
+		ids: [ 143 ],
+		debugId: 1004,
+		name: 'app',
+		idNameHints: SortableSet(0) [Set] {
+			_sortFn: undefined,
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		preventIntegration: false,
+		filenameTemplate: '[name].[chunkhash].js',
+		cssFilenameTemplate: undefined,
+		_groups: SortableSet(1) [Set] {
+			[Entrypoint],
+			_sortFn: [Function: compareChunkGroupsByIndex],
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		runtime: 'app',
+		files: SetDeprecatedArray(2) [Set] {
+			'app.9f03c4596e124298e187.css',
+			'app.9f03c4596e124298e187.js'
+		},
+		auxiliaryFiles: Set(0) {},
+		rendered: true,
+		hash: '9f03c4596e124298e1872d652368ba96',
+		contentHash: [Object: null prototype] {
+			'css/mini-extract': 'f40df5decdf7e49f3615',
+			javascript: '0e73554292c0f720820b'
+		},
+		renderedHash: '9f03c4596e124298e187',
+		chunkReason: undefined,
+		extraAsync: false
+	},
+	Chunk {
+		id: 902,
+		ids: [ 902 ],
+		debugId: 1005,
+		name: 'app.init',
+		idNameHints: SortableSet(0) [Set] {
+			_sortFn: undefined,
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		preventIntegration: false,
+		filenameTemplate: undefined,
+		cssFilenameTemplate: undefined,
+		_groups: SortableSet(1) [Set] {
+			[ChunkGroup],
+			_sortFn: [Function: compareChunkGroupsByIndex],
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		runtime: 'app',
+		files: SetDeprecatedArray(1) [Set] { 'app.init.359d14e0a89f3a3c2308.js' },
+		auxiliaryFiles: Set(0) {},
+		rendered: true,
+		hash: '359d14e0a89f3a3c2308a148f6afd1fc',
+		contentHash: [Object: null prototype] { javascript: 'bb002c6aca4b4212e777' },
+		renderedHash: '359d14e0a89f3a3c2308',
+		chunkReason: undefined,
+		extraAsync: false
+	},
+	Chunk {
+		id: 82,
+		ids: [ 82 ],
+		debugId: 1006,
+		name: 'views.home.soon',
+		idNameHints: SortableSet(0) [Set] {
+			_sortFn: undefined,
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		preventIntegration: false,
+		filenameTemplate: undefined,
+		cssFilenameTemplate: undefined,
+		_groups: SortableSet(1) [Set] {
+			[ChunkGroup],
+			_sortFn: [Function: compareChunkGroupsByIndex],
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		runtime: 'app',
+		files: SetDeprecatedArray(2) [Set] {
+			'views.home.soon.1d6545e46729b7489584.css',
+			'views.home.soon.1d6545e46729b7489584.js'
+		},
+		auxiliaryFiles: Set(0) {},
+		rendered: true,
+		hash: '1d6545e46729b748958480054eb88da5',
+		contentHash: [Object: null prototype] {
+			'css/mini-extract': 'e2eee03d8d75a2170b92',
+			javascript: 'e958e49f1937144cbc06'
+		},
+		renderedHash: '1d6545e46729b7489584',
+		chunkReason: undefined,
+		extraAsync: false
+	},
+	Chunk {
+		id: 630,
+		ids: [ 630 ],
+		debugId: 1007,
+		name: 'views.errors.code',
+		idNameHints: SortableSet(0) [Set] {
+			_sortFn: undefined,
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		preventIntegration: false,
+		filenameTemplate: undefined,
+		cssFilenameTemplate: undefined,
+		_groups: SortableSet(1) [Set] {
+			[ChunkGroup],
+			_sortFn: [Function: compareChunkGroupsByIndex],
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		runtime: 'app',
+		files: SetDeprecatedArray(1) [Set] {
+			'views.errors.code.7d8dab1fd6fc414d706b.js'
+		},
+		auxiliaryFiles: Set(0) {},
+		rendered: true,
+		hash: '7d8dab1fd6fc414d706bb7426ff69d83',
+		contentHash: [Object: null prototype] { javascript: 'eafd054ba0f16d2b7153' },
+		renderedHash: '7d8dab1fd6fc414d706b',
+		chunkReason: undefined,
+		extraAsync: false
+	},
+	Chunk {
+		id: 736,
+		ids: [ 736 ],
+		debugId: 1008,
+		name: 'vendor',
+		idNameHints: SortableSet(1) [Set] {
+			'vendor',
+			_sortFn: undefined,
+			_lastActiveSortFn: Symbol(not sorted),
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		preventIntegration: false,
+		filenameTemplate: '[name].[chunkhash].js',
+		cssFilenameTemplate: undefined,
+		_groups: SortableSet(2) [Set] {
+			[Entrypoint],
+			[ChunkGroup],
+			_sortFn: [Function: compareChunkGroupsByIndex],
+			_lastActiveSortFn: [Function: compareChunkGroupsByIndex],
+			_cache: undefined,
+			_cacheOrderIndependent: undefined
+		},
+		runtime: 'app',
+		files: SetDeprecatedArray(1) [Set] { 'vendor.59054062b651152d5c3d.js' },
+		auxiliaryFiles: Set(0) {},
+		rendered: true,
+		hash: '59054062b651152d5c3de6383967bad5',
+		contentHash: [Object: null prototype] { javascript: '9d2367d164465c963913' },
+		renderedHash: '59054062b651152d5c3d',
+		chunkReason: 'split chunk (cache group: vendor) (name: vendor)',
+		extraAsync: false
+	},
+	concat: [Function (anonymous)],
+	entry: [Function (anonymous)],
+	filter: [Function (anonymous)],
+	find: [Function (anonymous)],
+	findIndex: [Function (anonymous)],
+	includes: [Function (anonymous)],
+	indexOf: [Function (anonymous)],
+	join: [Function (anonymous)],
+	lastIndexOf: [Function (anonymous)],
+	map: [Function (anonymous)],
+	reduce: [Function (anonymous)],
+	reduceRight: [Function (anonymous)],
+	slice: [Function (anonymous)],
+	some: [Function (anonymous)],
+	push: [Function (anonymous)],
+	copyWithin: [Function (anonymous)],
+	fill: [Function (anonymous)],
+	pop: [Function (anonymous)],
+	reverse: [Function (anonymous)],
+	shift: [Function (anonymous)],
+	splice: [Function (anonymous)],
+	sort: [Function (anonymous)],
+	unshift: [Function (anonymous)],
+	[Symbol(Symbol.isConcatSpreadable)]: true
+}

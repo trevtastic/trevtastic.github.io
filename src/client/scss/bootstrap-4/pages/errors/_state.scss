@@ -1,0 +1,22 @@
+//
+// Custom page behaviour
+// --------------------------------------------------
+
+// Contents
+//
+// Behaviours
+// States
+
+
+@use "../../functions/" as fn;
+@use "../../variables" as globs;
+@use "../../mixins" as mx;
+
+
+// Behaviours
+//
+// Overlays and background behaviour
+
+.js-adjust {
+	display: block;
+}

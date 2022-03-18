@@ -83,15 +83,14 @@ function ErrorCode( props )
 	return (
 		<>
 			<div className="o-section-error">
-				<div className="c-concord">
-					<div className="c-concord__pane u-align-content">
-						<span className="c-concord__align c-concord__align--error"></span>
+				<div className="c-concord c-concord--error">
+					<div className="c-concord__pane">
 						<div className="c-concord__content">
 							<div className="c-concord__bg"></div>
 							<div className="c-concord__info">
 								<div className="o-container-fluid">
 									<div className="o-row">
-										<div className="o-col-xs-12">
+										<div className="o-col-12">
 											<div className="c-concord__text c-concord__text--error">
 												<p className="c-concord__text__emphasis">
 													{'ERROR ' + error.code + ' ' + codeMap[ error.code ].toUpperCase()}

@@ -1,0 +1,29 @@
+// 
+// Page theme colors
+// --------------------------------------------------
+
+// Contents
+//
+// Objects
+//  Background
+
+@use "../../variables" as globs;
+@use "../../variables/theme" as *;
+@use "../../mixins" as mx;
+
+
+// Objects
+// ----------------------
+// Custom object colors
+
+
+// Background
+//
+// background object colors
+
+.t-#{$name} {
+
+	.o-section-error {
+		background-color: $background-color;
+	}
+}

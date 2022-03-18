@@ -44,7 +44,7 @@ module.exports = {
 		'react/react-in-jsx-scope': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
-		'@babel/new-cap': 'error', // handles decorators (@Decorator)
+		'@babel/new-cap': 'off', // handles decorators (@Decorator)
 		'@babel/no-invalid-this': 'off', // handles class fields and private class methods
 		'@babel/no-unused-expressions': 'off', // handles do expressions
 		'@babel/object-curly-spacing': 'off', // handles export * as x from "mod";

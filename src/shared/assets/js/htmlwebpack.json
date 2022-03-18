@@ -1,0 +1,420 @@
+{
+	"tags": {
+		"headTags": [
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "description",
+					"content": "Welcome to MERN."
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "keywords",
+					"content": "web development, software development, software engineering"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "msapplication-config",
+					"content": "/browserconfig.xml"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "theme-color",
+					"content": "#000000"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "apple-mobile-web-app-capable",
+					"content": "yes"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "apple-mobile-web-app-status-bar",
+					"content": "#000000"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "apple-mobile-web-app-status-bar-style",
+					"content": "black"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"name": "apple-mobile-web-app-title",
+					"content": "MERN App"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:site_name",
+					"content": "MERN"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:image_secure",
+					"content": "https://mern.com/images/content/bg/site-poster.jpg?v=1647488569004"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:title",
+					"content": "MERN | Web development"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:description",
+					"content": "Web development."
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:type",
+					"content": "website"
+				}
+			},
+			{
+				"tagName": "meta",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"property": "og:url",
+					"content": "https://mern.com"
+				}
+			},
+			{
+				"tagName": "script",
+				"voidTag": false,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"defer": true,
+					"src": "plexi.vendor.59054062b651152d5c3d.js"
+				}
+			},
+			{
+				"tagName": "script",
+				"voidTag": false,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"defer": true,
+					"src": "plexi.app.8db5208498d48d5e1cd7.js"
+				}
+			},
+			{
+				"tagName": "link",
+				"voidTag": true,
+				"meta": {
+					"plugin": "html-webpack-plugin"
+				},
+				"attributes": {
+					"href": "plexi.app.8db5208498d48d5e1cd7.css",
+					"rel": "stylesheet"
+				}
+			}
+		],
+		"bodyTags": []
+	},
+	"files": {
+		"publicPath": "",
+		"js": [
+			"plexi.vendor.59054062b651152d5c3d.js",
+			"plexi.app.8db5208498d48d5e1cd7.js"
+		],
+		"css": [
+			"plexi.app.8db5208498d48d5e1cd7.css"
+		]
+	},
+	"chunks": {
+		"82": {
+			"entry": [
+				"app"
+			],
+			"files": [
+				"plexi.views.home.soon.1d6545e46729b7489584.css",
+				"plexi.views.home.soon.1d6545e46729b7489584.js"
+			],
+			"hash": "1d6545e46729b748958480054eb88da5",
+			"name": "views.home.soon"
+		},
+		"143": {
+			"entry": [
+				"app"
+			],
+			"files": [
+				"plexi.app.8db5208498d48d5e1cd7.css",
+				"plexi.app.8db5208498d48d5e1cd7.js"
+			],
+			"hash": "8db5208498d48d5e1cd7b4ad3b086135",
+			"name": "app"
+		},
+		"630": {
+			"entry": [
+				"app"
+			],
+			"files": [
+				"plexi.views.errors.code.7d8dab1fd6fc414d706b.js"
+			],
+			"hash": "7d8dab1fd6fc414d706bb7426ff69d83",
+			"name": "views.errors.code"
+		},
+		"736": {
+			"entry": [
+				"app"
+			],
+			"files": [
+				"plexi.vendor.59054062b651152d5c3d.js"
+			],
+			"hash": "59054062b651152d5c3de6383967bad5",
+			"name": "vendor"
+		},
+		"902": {
+			"entry": [
+				"app"
+			],
+			"files": [
+				"plexi.app.init.359d14e0a89f3a3c2308.js"
+			],
+			"hash": "359d14e0a89f3a3c2308a148f6afd1fc",
+			"name": "app.init"
+		}
+	},
+	"options": {
+		"template": "C:\\Users\\tchig\\Sites\\trevtastic\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\tchig\\Sites\\trevtastic\\src\\shared\\templates\\home.ejs",
+		"templateContent": false,
+		"filename": "home.njk",
+		"publicPath": "auto",
+		"hash": false,
+		"inject": false,
+		"scriptLoading": "defer",
+		"compile": true,
+		"favicon": false,
+		"minify": {
+			"collapseInlineTagWhitespace": false,
+			"collapseWhitespace": false
+		},
+		"cache": true,
+		"showErrors": true,
+		"chunks": "all",
+		"excludeChunks": [],
+		"chunksSortMode": "auto",
+		"meta": {
+			"description": {
+				"name": "description",
+				"content": "Welcome to MERN."
+			},
+			"keywords": {
+				"name": "keywords",
+				"content": "web development, software development, software engineering"
+			},
+			"msapplication-config": {
+				"name": "msapplication-config",
+				"content": "/browserconfig.xml"
+			},
+			"theme-color": {
+				"name": "theme-color",
+				"content": "#000000"
+			},
+			"apple-web-capable": {
+				"name": "apple-mobile-web-app-capable",
+				"content": "yes"
+			},
+			"apple-web-status-bar": {
+				"name": "apple-mobile-web-app-status-bar",
+				"content": "#000000"
+			},
+			"apple-web-status-bar-style": {
+				"name": "apple-mobile-web-app-status-bar-style",
+				"content": "black"
+			},
+			"apple-web-title": {
+				"name": "apple-mobile-web-app-title",
+				"content": "MERN App"
+			},
+			"og-site-name": {
+				"property": "og:site_name",
+				"content": "MERN"
+			},
+			"og-image-secure": {
+				"property": "og:image_secure",
+				"content": "https://mern.com/images/content/bg/site-poster.jpg?v=1647488569004"
+			},
+			"og-title": {
+				"property": "og:title",
+				"content": "MERN | Web development"
+			},
+			"og-description": {
+				"property": "og:description",
+				"content": "Web development."
+			},
+			"og-type": {
+				"property": "og:type",
+				"content": "website"
+			},
+			"og-url": {
+				"property": "og:url",
+				"content": "https://mern.com"
+			}
+		},
+		"base": false,
+		"title": "Webpack App",
+		"xhtml": false,
+		"appMountId": "appMountPoint",
+		"devMode": true,
+		"entries": {
+			"app": {
+				"import": "/src/client/app",
+				"destCSS": "/assets/css/gen/",
+				"destJS": "/assets/js/gen/"
+			},
+			"bundle": {
+				"destCSS": "/assets/css/gen/",
+				"destJS": "/assets/js/gen/"
+			},
+			"vendor": {
+				"destCSS": "/assets/css/gen/",
+				"destJS": "/assets/js/gen/"
+			}
+		},
+		"links": {
+			"apple-touch-icon": {
+				"rel": "apple-touch-icon",
+				"sizes": "180x180",
+				"href": "/images/common/touch/apple-touch-icon.png?v=1647488569004"
+			},
+			"apple-touch-startup-image-1096": {
+				"rel": "apple-touch-startup-image",
+				"media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
+				"href": "/images/common/touch/apple-launch-640x1096.png?v=1647488569004"
+			},
+			"apple-touch-startup-image-1136": {
+				"rel": "apple-touch-startup-image",
+				"media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
+				"href": "/images/common/touch/apple-launch-640x1136.png?v=1647488569004"
+			},
+			"favicon-180": {
+				"rel": "icon",
+				"type": "image/png",
+				"sizes": "180x180",
+				"href": "/images/common/favicon/favicon-180x180.png?v=1647488569004"
+			},
+			"favicon-96": {
+				"rel": "icon",
+				"type": "image/png",
+				"sizes": "96x96",
+				"href": "/images/common/favicon/favicon-96x96.png?v=1647488569004"
+			},
+			"favicon-32": {
+				"rel": "icon",
+				"type": "image/png",
+				"sizes": "32x32",
+				"href": "/images/common/favicon/favicon-32x32.png?v=1647488569004"
+			},
+			"favicon-16": {
+				"rel": "icon",
+				"type": "image/png",
+				"sizes": "16x16",
+				"href": "/images/common/favicon/favicon-16x16.png?v=1647488569004"
+			},
+			"favicon": {
+				"rel": "shortcut icon",
+				"href": "/favicon.ico?v=1647488569004"
+			},
+			"manifest": {
+				"rel": "manifest",
+				"href": "/manifest.json?v=1647488569004"
+			},
+			"safari-pinned-tab": {
+				"rel": "mask-icon",
+				"color": "#f62b54",
+				"href": "/images/common/touch/safari-pinned-tab.svg?v=1647488569004"
+			}
+		},
+		"mobile": true,
+		"prefix": "plexi",
+		"scripts": [
+			{
+				"type": "text/javascript",
+				"src": "/assets/js/lib/jquery-3.5.1.js"
+			}
+		],
+		"theme": "bluegrey",
+		"timeStamp": 1647488569007
+	}
+}

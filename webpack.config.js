@@ -25,12 +25,11 @@ function Config( env, argv )
 	const timeStamp = new Date().getTime();
 	const cssDest = '/assets/css/gen/';
 	const jsDest = '/assets/js/gen/';
-	const jsLib = '/assets/js/lib';
+	const jsLib = '/assets/js/lib/';
 
-	// define entry point descriptor
+	// entry descriptor: manual sort
 	const entries = {
-		home: {
-			import: '/src/client/app/home',
+		vendor: {
 			destCSS: cssDest,
 			destJS: jsDest
 		},
@@ -38,10 +37,16 @@ function Config( env, argv )
 			destCSS: cssDest,
 			destJS: jsDest
 		},
-		vendor: {
+		app: {
+			import: '/src/client/app',
 			destCSS: cssDest,
 			destJS: jsDest
-		}
+		},
+		common: {
+			import: '/src/client/common',
+			destCSS: cssDest,
+			destJS: jsDest
+		},
 	};
 
 	// define environment
@@ -49,9 +54,7 @@ function Config( env, argv )
 	const devMode = envMode !== 'production';
 
 	// define namespace
-	const prefix = 'plexi';
-	const minSuffix = ( ! devMode ) ? '.min' : '';
-	const chunkSuffix = ( devMode ) ? '.[chunkhash]' : '';
+	const name = devMode ? '[name].[chunkhash]' : '[name].[contenthash]';
 
 	return {
 
@@ -66,7 +69,7 @@ function Config( env, argv )
 					entries[ entry ][ 'import' ]
 				) {
 					all[ entry ] = {
-						filename: prefix + '.[name]' + minSuffix + chunkSuffix + '.js',
+						filename: name + '.js',
 						import: entries[ entry ][ 'import' ]
 					};
 				}
@@ -167,7 +170,7 @@ function Config( env, argv )
 					vendor: {
 						name: 'vendor',
 						test: /[\\/]node_modules[\\/]/,
-						filename: prefix + '.[name]' + minSuffix + chunkSuffix + '.js'
+						filename: name + '.js'
 					},
 					bundle: {
 						name: 'bundle',
@@ -197,7 +200,7 @@ function Config( env, argv )
 							return false;
 						},
 						minChunks: 1,
-						filename: prefix + '.[name]' + minSuffix + chunkSuffix + '.js'
+						filename: name + '.js'
 					}
 				}
 			},
@@ -224,7 +227,7 @@ function Config( env, argv )
 		},
 
 		output: {
-			filename: prefix + '.[name]' + minSuffix + chunkSuffix + '.js',
+			filename: name + '.js',
 			path: path.resolve( 'src', 'client', 'build' ), // the target directory for all output files
 		},
 
@@ -243,7 +246,7 @@ function Config( env, argv )
 				appMountId: 'appMountPoint',
 				devMode,
 				entries,
-				filename: 'home.njk',
+				filename: 'react.njk',
 				inject: false,
 				links: htmlLinks,
 				meta: metadata,
@@ -252,14 +255,13 @@ function Config( env, argv )
 					collapseWhitespace: false,
 				},
 				mobile: true,
-				prefix,
 				scripts: [
 					{
 						type: 'text/javascript',
-						src: ( ! devMode ? '/js/lib/jquery-3.5.1.min.js' : '/js/lib/jquery-3.5.1.js' )
+						src: ( ! devMode ? jsLib + 'jquery-3.5.1.min.js' : jsLib + 'jquery-3.5.1.js' )
 					}
 				],
-				template: 'src/shared/templates/home.ejs',
+				template: 'src/shared/templates/react.ejs',
 				templateParameters: getTemplateParams,
 				theme,
 				timeStamp
@@ -283,11 +285,10 @@ function Config( env, argv )
 					keepClosingSlash: true, // for xhtml
 				},
 				mobile: true,
-				prefix,
 				scripts: [
 					{
 						type: 'text/javascript',
-						src: ( ! devMode ? '/js/lib/jquery-1.12.4.min.js' : '/js/lib/jquery-1.12.4.js' )
+						src: ( ! devMode ? jsLib + 'jquery-1.12.4.min.js' : jsLib + 'jquery-1.12.4.js' )
 					}
 				],
 				template: 'src/shared/templates/legacy.ejs',
@@ -295,17 +296,42 @@ function Config( env, argv )
 				theme,
 				timeStamp
 			}),
+			new HtmlWebpackPlugin({
+				appMountId: 'appMountPoint',
+				devMode,
+				entries,
+				filename: 'standard.njk',
+				inject: false,
+				links: htmlLinks,
+				meta: metadata,
+				minify: {
+					collapseInlineTagWhitespace: false,
+					collapseWhitespace: false,
+				},
+				mobile: true,
+				scripts: [
+					{
+						type: 'text/javascript',
+						src: ( ! devMode ? jsLib + 'jquery-3.5.1.min.js' : jsLib + 'jquery-3.5.1.js' )
+					}
+				],
+				template: 'src/shared/templates/standard.ejs',
+				templateParameters: getTemplateParams,
+				theme,
+				timeStamp
+			}),
 			
 			// Extract css
 			new MiniCssExtractPlugin({
-				filename: prefix + '.[name]' + minSuffix + chunkSuffix + '.css'
+				filename: name + '.css',
+				// runtime: false, // disable lazy loading css files
 			}),
 
 			// Generate source maps
 			! devMode ? new webpack.SourceMapDevToolPlugin({
 				append: '\n//# sourceMappingURL=[url]',
-				exclude: [ new RegExp( `${prefix}\.vendor\.[a-z0-9]+\.js` ) ],
-				filename: prefix + '.[name]' + minSuffix + chunkSuffix + '[ext].map'
+				exclude: [ new RegExp( 'vendor\.[a-z0-9]+\.js' ) ],
+				filename: name + '[ext].map'
 			}) : function() {}
 		],
 

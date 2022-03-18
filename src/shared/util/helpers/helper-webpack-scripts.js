@@ -12,7 +12,15 @@ function getTemplateParams( compilation, assets, assetTags, options )
 {
 	let chunks = {};
 
-	for ( const chunk of compilation.chunks ) {
+	// console.log( 'Webpack compilation edit: ', {
+	// 	assets: compilation.assets,
+	// 	assetsInfo: compilation.assetsInfo,
+	// 	chunks: compilation.chunks,
+	// 	chunkGroups: compilation.chunkGroups
+	// });
+
+	for ( const chunk of compilation.chunks )
+	{
 		// Get associated cache data
 		let runtime = [];
 		if ( typeof chunk.runtime === 'string' ) {
@@ -33,7 +41,9 @@ function getTemplateParams( compilation, assets, assetTags, options )
 			entry: runtime,
 			files,
 			hash: chunk.hash,
-			name: chunk.name || false
+			id: chunk.id,
+			name: chunk.name || false,
+			reason: chunk.chunkReason
 		};
 	}
 

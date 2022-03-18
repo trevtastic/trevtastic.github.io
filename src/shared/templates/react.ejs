@@ -1,0 +1,51 @@
+<% const regexp = /[~./]?(vendor|bundle|app)[~.]?/;
+   const metadata = htmlWebpackPlugin.options.meta;
+   const metalinks = htmlWebpackPlugin.options.links;
+   const theme = htmlWebpackPlugin.options.theme;
+%><!DOCTYPE html>
+<html lang="en" class="s-sr t-<%= theme %>" data-ui="{{ browser }}" data-ua="{{ useragent }}">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<% if ( htmlWebpackPlugin.options.mobile ) { %><meta name="viewport" content="width=device-width,initial-scale=1"><% } %>
+	<title>Trevor Chigonda | {{ title }}</title><%
+
+	for ( const meta in metadata ) { %>
+	<meta<% for ( let key in metadata[ meta ] ) { %> <%= key %>="<%= metadata[ meta ][ key ] %>"<% } %>><%
+	}
+
+	for ( var item in metalinks ) {
+		if ( typeof metalinks[ item ] === 'string' || metalinks[ item ] instanceof String ) { metalinks[ item ] = { rel: 'stylesheet', href: metalinks[ item ] } } %>
+	<link<% for ( key in metalinks[ item ] ) { %> <%= key %>="<%= metalinks[ item ][ key ] %>"<% } %>><%
+	}
+
+	for ( const chunk of htmlWebpackPlugin.files.css ) {
+		let match = chunk.match( regexp );
+		if ( match && match.length > 1 ) { %>
+	<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.entries[ match[ 1 ] ].destCSS + chunk %>" /><%
+		}
+	}
+
+	for ( item of htmlWebpackPlugin.options.scripts ) {
+		if ( typeof item === 'string' || item instanceof String ) { item = { src: item, type: 'text/javascript' }; } %>
+	<script<% for ( key in item ) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
+	} %>
+</head>
+<body>
+	{% include 'pulse-loader.njk' %}
+	<div id="<%= htmlWebpackPlugin.options.appMountId%>">
+		{{ content | safe }}
+	</div>
+	<div><%
+		for ( chunk of htmlWebpackPlugin.files.js ) {
+			match = chunk.match( regexp );
+			if ( match && match.length > 1 ) { %>
+		<script type="text/javascript" src="<%= htmlWebpackPlugin.options.entries[ match[ 1 ] ].destJS + chunk %>"></script><%
+			}
+		} %>
+		{% if context %}
+			<script type="text/javascript">{{ context }}</script>
+		{% endif %}
+	</div>
+</body>
+</html>
