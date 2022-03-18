@@ -176,15 +176,15 @@ function Config( env, argv )
 						name: 'bundle',
 						test: function ( module, chunks ) {
 							const paths = [
-								path.resolve( 'src', 'client', 'react', 'components' ),
-								path.resolve( 'src', 'client', 'react', 'constants' ),
-								path.resolve( 'src', 'client', 'react', 'containers' ),
-								path.resolve( 'src', 'client', 'react', 'context' ),
-								path.resolve( 'src', 'client', 'react', 'helpers' ),
-								path.resolve( 'src', 'client', 'react', 'hooks' ),
-								path.resolve( 'src', 'client', 'react', 'layouts' ),
-								path.resolve( 'src', 'client', 'react', 'redux' ),
-								path.resolve( 'src', 'client', 'util' )
+								path.resolve( 'src', 'shared', 'react', 'components' ),
+								path.resolve( 'src', 'shared', 'react', 'constants' ),
+								path.resolve( 'src', 'shared', 'react', 'containers' ),
+								path.resolve( 'src', 'shared', 'react', 'context' ),
+								path.resolve( 'src', 'shared', 'react', 'helpers' ),
+								path.resolve( 'src', 'shared', 'react', 'hooks' ),
+								path.resolve( 'src', 'shared', 'react', 'layouts' ),
+								path.resolve( 'src', 'shared', 'react', 'redux' ),
+								path.resolve( 'src', 'shared', 'util' )
 							];
 
 							if ( module.resource != undefined )
@@ -242,6 +242,36 @@ function Config( env, argv )
 			}),
 
 			// Write out our compiled .js scripts to html page
+			new HtmlWebpackPlugin({
+				appMountId: 'appMountPoint',
+				devMode,
+				entries,
+				filename: 'errors.njk',
+				inject: false,
+				links: [
+					htmlLinks.favicon
+				],
+				meta: [
+					metadata.description,
+					metadata.keywords
+				],
+				minify: {
+					collapseInlineTagWhitespace: false,
+					collapseWhitespace: false,
+					keepClosingSlash: true, // for xhtml
+				},
+				mobile: true,
+				scripts: [
+					{
+						type: 'text/javascript',
+						src: ( ! devMode ? jsLib + 'jquery-1.12.4.min.js' : jsLib + 'jquery-1.12.4.js' )
+					}
+				],
+				template: 'src/shared/templates/errors.ejs',
+				templateParameters: getTemplateParams,
+				theme,
+				timeStamp
+			}),
 			new HtmlWebpackPlugin({
 				appMountId: 'appMountPoint',
 				devMode,
@@ -324,7 +354,7 @@ function Config( env, argv )
 			// Extract css
 			new MiniCssExtractPlugin({
 				filename: name + '.css',
-				// runtime: false, // disable lazy loading css files
+				runtime: false, // disable lazy loading css files
 			}),
 
 			// Generate source maps
@@ -343,6 +373,7 @@ function Config( env, argv )
 			],
 			alias: {
 				App: path.resolve( 'src', 'client', 'app' ),
+				Common: path.resolve( 'src', 'client', 'common' ),
 				Legacy: path.resolve( 'src', 'client', 'legacy' ),
 				Server: path.resolve( 'src', 'server' ),
 				Scss: path.resolve( 'src', 'client', 'scss' ),

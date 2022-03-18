@@ -42,7 +42,7 @@ function cleanTask()
 		resolve.publicPath + resolve.cssDestPath + '/**/*.css*',
 		// delete all generated js and sourcemaps in the public `js` folder
 		resolve.publicPath + resolve.jsDestPath + '/**/*.js*',
-		// delete all public js workers minfied and sourcemaps
+		// delete all public js workers minified and sourcemaps
 		resolve.publicPath + '/*.map'
 	]);
 }

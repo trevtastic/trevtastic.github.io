@@ -28,7 +28,7 @@ module.exports = function ( eleventyConfig ) {
 
 			// set public path for production
 			if ( ! isDev ) {
-				publicPath += 'javascriptdocs/';
+				publicPath += '/';
 			}
 
 			// resolve relative links

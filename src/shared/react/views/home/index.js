@@ -10,8 +10,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Icons from '../containers/modules/icons.js';
-import { LogoJam } from '../components/icons/index.js';
+import Icons from '../../containers/modules/icons.js';
+import { LogoJam } from '../../components/icons/index.js';
 
 /**
  * Declare private properties

@@ -11,7 +11,7 @@ import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Loader from 'Shared/react/components/loaders/loader-proxy';
-import ViewHome from 'Shared/react/views';
+import ViewHome from 'Shared/react/views/home';
 
 // const ViewHome = lazy( () => import( /* webpackChunkName: 'views' */ 'Shared/react/views' ) );
 const ViewComingSoon = lazy( () => import( /* webpackChunkName: 'views.home.soon' */ 'Shared/react/views/home/coming-soon' ) );

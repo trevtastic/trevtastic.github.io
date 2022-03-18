@@ -40,18 +40,20 @@ ehthumbs.db
 package-lock.json
 Thumbs.db
 
+# Config files #
+################
+.env
+package-lock.json
+
 # Program files #
 ####################
 *.psd
-*.afphoto
 *.ai
+*.afphoto
+*.afdesign
 
 # Folders #
 ####################
 /.vscode/
 /_notes/
-/application/cache/views/*/*/
-/logs/
 /node_modules/
-/sessions/
-/vendor/
